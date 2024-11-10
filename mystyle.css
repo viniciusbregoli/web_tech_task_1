@@ -142,3 +142,7 @@ legend {
 .login-button:hover {
     background-color: #004d99; /* Darker blue on hover */
 }
+
+img{
+    width:100 px;
+    height: 100 px;
