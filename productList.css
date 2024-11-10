@@ -3,14 +3,8 @@ a {
     color: black;
 }
 
-footer {
-    margin-top: 30px;
-}
-
-
 h1 {
     margin: 40px 0px 30px 0px;
-    text-align: center;
 }
 
 hr {
@@ -32,9 +26,6 @@ ul li {
 }
 li a {
     font-size: large;
-}
-li a:hover {
-    font-weight: bold;
 }
 li a:active {
     color: #004d99;
