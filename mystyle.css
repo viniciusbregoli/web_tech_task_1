@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px; /* Add space below the heading */
+    margin-bottom: 20px;
 }
 
 p {
@@ -20,8 +20,8 @@ p {
 a {
     color: blue;
     text-decoration: none;
-    display: block; /* Ensures links appear in a new line if needed */
-    margin-bottom: 10px; /* Adds spacing between links */
+    display: block;
+    margin-bottom: 10px;
 }
 
 a:hover {
@@ -29,12 +29,10 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Table header styles */
 th {
     background-color: lightgray;
 }
 
-/* List Styling for categories */
 ul {
     list-style-type: none; /* Remove default bullets */
     padding: 0;
@@ -56,17 +54,6 @@ ul li ul li {
     margin-left: 20px;
 }
 
-/* Footer links */
 footer {
     margin-top: 20px;
-}
-
-footer a {
-    color: blue;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer a:hover {
-    color: darkblue;
 }
