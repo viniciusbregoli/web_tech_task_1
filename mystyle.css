@@ -18,6 +18,12 @@ body {
     margin: 20px auto;
     text-align: center;
 }
+img {
+    display: block;
+    width: 100px;
+    margin: auto;
+}
+
 
 h1 {
     margin-bottom: 20px;
@@ -143,7 +149,3 @@ legend {
     background-color: #004d99; /* Darker blue on hover */
 }
 
-img{
-    width:100 px;
-    height: 100 px;
-}
