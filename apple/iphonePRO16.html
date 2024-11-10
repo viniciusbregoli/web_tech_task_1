@@ -1,5 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        body {
+            background-color: lightcyan;
+            margin: 0px;
+            font-family: "Arial";
+        }
+        h1 {
+            text-align: start;
+            padding-left: 30px;
+            padding-top: 35px;
+        }
+        h2{
+            text-align: center;
+        }
+        #info-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 0px 40px 0px;
+            background-color: #F5F5F7;
+            padding: 30px;
+        }
+        img {
+            display: inline-block;
+            padding: 10px;
+            background-color: white;
+            border-radius: 20px;
+            width: 30%;
+            margin-right: 50px;
+        }
+        #info-top-right {
+            display: block;
+            width: 45%;
+        }
+        fieldset {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+        legend {
+            text-align: center;
+            padding: 0px 10px;
+            font-weight: bold;
+        }
+        #color {
+            margin-top: 8px;
+        }
+        #storage {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        select {
+            margin-bottom: 15px;
+            border: 0px;
+            padding: 2px 5px;
+            background-color: #dedede;
+            border-radius: 10px;
+        }
+        select option {
+            border: 0px;
+        }
+        input[type="radio"] {
+            border: 1px solid #cccccc;
+            background-color: white; 
+        }
+        input[type="radio"]:checked {
+            background-color: black;
+        }
+        #cart {
+            width: 90%;
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 0;
+            border-radius: 4px;
+            border: none;
+        }
+        #cart:hover {
+            background-color: #004d99;
+        }
+        .feature-sub {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        /* Style for features list */
+        ul {
+        margin: 40px 0px 20px 0px;
+        padding-left: 0px;
+        list-style-type: none;              
+        }
+        ul li {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        footer p {
+            text-align: center;
+        }
+        footer p a {
+            color: #ff6600;
+            text-decoration: underline;
+        }
+    </style>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,54 +116,58 @@
     <body>
         <h1>iPhone 16 Pro</h1>
         </br>
-        <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=384&hei=512&fmt=jpeg&qlt=90&.v=1724187552442"
-            alt="Product Image">
-        </br>
-        </br>
-        <h2>Price: €1,199</h2>
-        <form>
-            <fieldset>
-                <legend>OPTIONS</legend>
-                <label for="color">Color</label>
-                <select id="color">
-                    <option value="desert">Desert Titanium</option>
-                    <option value="natural">Natural Titanium</option>
-                    <option value="white">White Titanium</option>
-                    <option value="black">Black Titanium</option>
-                </select>
-                </br>
-                <span>Storage</span>
-                <input type="radio" id="storage_128" name="storage" value="128" checked>
-                <label for="storage_128">128GB</label>
-                <input type="radio" id="storage_256" name="storage" value="256">
-                <label for="storage_256">256GB</label>
-                <input type="radio" id="storage_512" name="storage" value="512">
-                <label for="storage_512">512GB</label>
-                <input type="radio" id="storage_1000" name="storage" value="1000">
-                <label for="storage_1000">1TB</label>
-                </br>
-                </br>
-                <input type="submit" value="Add to Cart">
-            </fieldset>
-        </form>
-
-        <h2>Features</h2>
+        <div id="info-top">
+            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=384&hei=512&fmt=jpeg&qlt=90&.v=1724187552442"
+                alt="Product Image">
+            <div id="info-top-right">
+                <h2>Price: €1,199</h2>
+                <form>
+                    <fieldset>
+                        <legend>OPTIONS</legend>
+                        <label for="color">Color</label>
+                    </br>
+                        <select id="color">
+                            <option value="desert">Desert Titanium</option>
+                            <option value="natural">Natural Titanium</option>
+                            <option value="white">White Titanium</option>
+                            <option value="black">Black Titanium</option>
+                        </select>
+                        </br>
+                        <span id="storage">Storage</span>
+                    </br>
+                        <input type="radio" id="storage_128" name="storage" value="128" checked>
+                        <label for="storage_128">128GB</label>
+                        <input type="radio" id="storage_256" name="storage" value="256">
+                        <label for="storage_256">256GB</label>
+                        <input type="radio" id="storage_512" name="storage" value="512">
+                        <label for="storage_512">512GB</label>
+                        <input type="radio" id="storage_1000" name="storage" value="1000">
+                        <label for="storage_1000">1TB</label>
+                        </br>
+                        </br>
+                        <input id="cart" type="submit" value="Add to Cart">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div>
+        <h2>Features for iPhone 16 Pro</h2>
         <ul>
-            <li><strong>6.3″ Display</strong></br>
+            <li><strong class="feature-sub">6.3″ Display</strong></br>
                 Super Retina XDR display footnote</br>
                 ProMotion technology</br>
                 Always-On display
             </li>
             </br>
-            <li><strong>A18 Pro chip with 6-core GPU</strong>
+            <li><strong class="feature-sub">A18 Pro chip with 6-core GPU</strong>
             </li>
             </br>
-            <li><strong>Camera Control</strong></br>
+            <li><strong class="feature-sub">Camera Control</strong></br>
                 Easier way to capture</br>
                 Faster access to photo and video tools</br>
             </li>
             </br>
-            <li><strong>Pro camera system</strong></br>
+            <li><strong class="feature-sub">Pro camera system</strong></br>
                 48MP Fusion | 48MP Ultra Wide | Telephoto</br>
                 Super-high-resolution photos</br>
                 (24MP and 48MP)</br>
@@ -66,20 +178,20 @@
                 Latest-generation Photographic Styles
             </li>
             </br>
-            <li><strong>Up to 10x optical zoom range</strong>
+            <li><strong class="feature-sub">Up to 10x optical zoom range</strong>
             </li>
             </br>
-            <li><strong>Dynamic Island</strong></br>
+            <li><strong class="feature-sub">Dynamic Island</strong></br>
                 A magical way to interact with iPhone</br>
             </li>
             </br>
-            <li><strong>Up to 33 hours video playback</strong>
+            <li><strong class="feature-sub">Up to 33 hours video playback</strong>
             </li>
             </br>
-            <li><strong>USB‑C Supports USB 3</strong>
+            <li><strong class="feature-sub">USB‑C Supports USB 3</strong>
             </li>
             </br>
-            <li><strong>Face ID</strong>
+            <li><strong class="feature-sub">Face ID</strong>
             </li>
             </br>
         </ul>
