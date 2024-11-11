@@ -1,8 +1,8 @@
 /* General document styles */
 
 
-body {
-    font-family: "Arial";
+body { /* Body styles */
+    font-family: "Arial"; 
     font-size: 12px;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@ body {
     margin: 20px auto;
     text-align: center;
 }
-img {
+img {  /* Display images centered */
     display: block;
     width: 100px;
     margin: auto;
@@ -33,39 +33,39 @@ p {
     text-align: right; /* Align text to the right for paragraphs */
 }
 
-a {
+a { /* Link styles */
     color: blue;
     text-decoration: none;
     display: block;
     margin-bottom: 10px;
 }
 
-a:hover {
+a:hover { /* Hover effect for links */
     color: rgb(255, 0, 0);
     text-decoration: underline;
 }
 
-th {
+th { /* Table header styles */
     background-color: lightgray;
 }
 
-ul {
+ul { /* Unordered list styles */
     list-style-type: none; /* Remove default bullets */
     padding: 0;
     margin: 10px 0;
 }
 
-ul li {
+ul li { /* List item styles */
     margin: 10px 0;
     font-weight: bold;
     text-align: left;
 }
 
-ul li ul {
+ul li ul { /* Nested list styles */
     margin-top: 5px;
 }
 
-ul li ul li {
+ul li ul li { /* Nested list item styles */
     font-weight: normal;
     margin-left: 20px;
 }
@@ -74,7 +74,7 @@ footer {
     margin-top: 20px;
 }
 
-form {
+form { /* Form styles */
     background-color: white;
     padding: 20px;
     border-radius: 8px; /* Round the corners of the form by 8px */
@@ -123,11 +123,11 @@ button {
     border: none;
 }
 
-button:hover {
+button:hover { /* hover effect for button */
     background-color: #cc5200;
 }
 
-fieldset {
+fieldset { 
     border: 2px solid #ccc;
     padding: 20px; /* 20px padding in fieldset */
     border-radius: 8px; /* round the corners */
