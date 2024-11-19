@@ -1,9 +1,22 @@
+/* light & dark Mode */
+:root[color-theme="light"] {
+    --background: #ffffff;
+    --textColor: #000000;
+}
+
+:root[color-theme="dark"] {
+    --background: #262626;
+    --textColor: #ffffff;
+}
+
 /* General document styles */
 body {
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--textColor);
+    background-color: var(--background);
 }
 a {
-    color: black;
+    color: var(--textColor);
     text-decoration: none;
 }
 

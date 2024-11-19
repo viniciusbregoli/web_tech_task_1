@@ -18,10 +18,8 @@ div {
     border-radius: 8px;  /* Round the corners of the form by 8px */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* shadow around  */
     width: 300px;  
+    color: black;
     margin: 0 auto;  /*form centered*/
-}
-div span {
-    margin-bottom: 20px;
 }
 
 /* login button */
