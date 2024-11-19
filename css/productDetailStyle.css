@@ -1,0 +1,104 @@
+@import url('mystyle.css');
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+}
+
+header h1 {
+    padding: 0 40px;
+    margin: 40px 0 10px 0;
+}
+
+#product-container {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+#product-container img {
+    width:300px;
+    margin-right: 30px;
+}
+#product-option {
+    text-align: start;
+}
+#product-option h1 {
+    margin-bottom: 40px;
+}
+#product-option p {
+    font-size: 18px;
+}
+
+/* Style for Options */
+#product-option {
+    width: 500px;
+}
+fieldset {
+    padding: 26px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-align: start;
+}
+legend {
+    text-align: start;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+#color {
+    margin-top: 8px;
+}
+#storage {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+select {
+    margin-bottom: 15px;
+    border: 0px;
+    padding: 2px 5px;
+    background-color: #dedede;
+    border-radius: 10px;
+}
+select option {
+    border: 0px;
+}
+
+/* Style for Add to Cart button */
+input[type="submit"] {
+    width: 100%;
+    background-color: #ff6600;
+    color: white; /* text color white */
+    cursor: pointer;
+    border: none;
+    padding: 10px; 
+    margin: 10px 0;  
+    border-radius: 4px;  
+    font-size: 14px;
+}
+input[type="submit"]:hover {
+    background-color: #cc5200;  /* darker red when hovered */
+}
+
+table {
+    border-spacing: 30px;
+}
+caption {
+    font-size: 24px;
+    margin: 60px 0 20px 0;
+}
+
+td {
+    text-align: center;
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px;  /* Round the corners of the form by 8px */
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);  /* shadow around  */
+    width: 300px;  
+    margin: 0 auto;  /*form centered*/
+}

@@ -1,4 +1,11 @@
 /* General document styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
 
 /* General button style */
 button {
@@ -28,7 +35,6 @@ footer a {
 }
 #home {
     color: #ff6600;
-    text-decoration: none;
 }
 #home:hover {
     font-weight: bold;
