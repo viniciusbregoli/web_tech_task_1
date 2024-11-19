@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         /* Style for Options */
         fieldset {
             padding-top: 20px;
@@ -48,16 +53,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../mystyle.css">
         <title>Product</title>
     </head>
     <body>
         <h1>iPhone 16 Pro</h1>
         </br>
-        <div id="info-top">
+        <div>
             <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=384&hei=512&fmt=jpeg&qlt=90&.v=1724187552442"
                 alt="Product Image">
-            <div id="info-top-right">
+            <div>
                 <h2>Price: €1,199</h2>
                 <form>
                     <fieldset>
@@ -134,7 +138,7 @@
             </br>
         </ul>
         <footer>
-            <p><a href="../index.html">Home</a></p>
+            <a id="home" href="../index.html">Home</a>
         </footer>
     </body>
 </html>
