@@ -19,7 +19,11 @@
                 <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=384&hei=512&fmt=jpeg&qlt=90&.v=1724187552442"
                     alt="Product Image">
                 <div id="product-option">
-                    <p>Price: €1,199</p>
+                    <label for="priceWOTax">Price without taxes (€):</label>
+                    <input type="number" id="priceWOTax" step="100" value="1199" oninput="updatePrices()">
+                    <p id="priceWithTax">Price with Tax: €0.00</p>
+                    <button type="button" id="apply-discount">Apply 10% Discount</button>
+                    <button type="button" id="reset-prices">Reset Prices</button>
                     <form>
                         <fieldset>
                             <legend>OPTIONS</legend>
