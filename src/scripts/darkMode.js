@@ -6,5 +6,4 @@ function checkDarkMode(){
         document.documentElement.setAttribute("color-theme", "light");
     }
 }
-
 checkDarkMode();

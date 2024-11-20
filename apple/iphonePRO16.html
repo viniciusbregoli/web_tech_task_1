@@ -7,96 +7,100 @@
         <title>Product</title>
     </head>
     <body>
-        <header>
-            <h1 onclick="location.href='../index.html'">Tech Shop</h1>
+        <header class="container">
+            <h1>iPhone 16 Pro</h1>
+            <div id="header-right">
+                <a id="login" href="login.html">Login</a>
+                <a id="profile" href="customer.html"><img src="../assets/user.png" alt="profile"></a>
+            </div>
         </header>
-
-        </br>
-        <div id="product-container">
-            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=384&hei=512&fmt=jpeg&qlt=90&.v=1724187552442"
-                alt="Product Image">
-            <div id="product-option">
-                <h1>iPhone 16 Pro</h1>
-                <p>Price: €1,199</p>
-                <form>
-                    <fieldset>
-                        <legend>OPTIONS</legend>
-                        <label for="color">Color</label>
-                    </br>
-                        <select id="color">
-                            <option value="desert">Desert Titanium</option>
-                            <option value="natural">Natural Titanium</option>
-                            <option value="white">White Titanium</option>
-                            <option value="black">Black Titanium</option>
-                        </select>
-                        </br>
-                        <span id="storage">Storage</span>
-                    </br>
-                        <input type="radio" id="storage_128" name="storage" value="128" checked>
-                        <label for="storage_128">128GB</label>
-                        <input type="radio" id="storage_256" name="storage" value="256">
-                        <label for="storage_256">256GB</label>
-                        <input type="radio" id="storage_512" name="storage" value="512">
-                        <label for="storage_512">512GB</label>
-                        <input type="radio" id="storage_1000" name="storage" value="1000">
-                        <label for="storage_1000">1TB</label>
-                        </br>
-                        </br>
-                        <input id="cart" type="submit" value="Add to Cart">
-                    </fieldset>
-                </form>
+        <div id="product-info">
+            <div id="product-container">
+                <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=384&hei=512&fmt=jpeg&qlt=90&.v=1724187552442"
+                    alt="Product Image">
+                <div id="product-option">
+                    <p>Price: €1,199</p>
+                    <form>
+                        <fieldset>
+                            <legend>OPTIONS</legend>
+                            <label for="color">Color</label>
+                            </br>
+                            <select id="color">
+                                <option value="desert">Desert Titanium</option>
+                                <option value="natural">Natural Titanium</option>
+                                <option value="white">White Titanium</option>
+                                <option value="black">Black Titanium</option>
+                            </select>
+                            </br>
+                            <span id="storage">Storage</span>
+                            </br>
+                            <input type="radio" id="storage_128" name="storage" value="128" checked>
+                            <label for="storage_128">128GB</label>
+                            <input type="radio" id="storage_256" name="storage" value="256">
+                            <label for="storage_256">256GB</label>
+                            <input type="radio" id="storage_512" name="storage" value="512">
+                            <label for="storage_512">512GB</label>
+                            <input type="radio" id="storage_1000" name="storage" value="1000">
+                            <label for="storage_1000">1TB</label>
+                            </br>
+                            </br>
+                            <input id="cart" type="submit" value="Add to Cart">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <table>
+                    <caption>Features</caption>
+                    <tr>
+                        <td><strong>6.3″ Display</strong></br></br>
+                            Super Retina XDR display footnote</br>
+                            ProMotion technology</br>
+                            Always-On display
+                        </td>
+                        <td><strong>A18 Pro chip with 6-core GPU</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Camera Control</strong></br></br>
+                            Easier way to capture</br>
+                            Faster access to photo and video tools</br>
+                        </td>
+                        <td><strong>Pro camera system</strong></br></br>
+                            48MP Fusion | 48MP Ultra Wide | Telephoto</br>
+                            Super-high-resolution photos</br>
+                            (24MP and 48MP)</br>
+                            Next-generation portraits with Focus and Depth Control</br>
+                            48MP macro photography</br>
+                            Dolby Vision up to 4K at 120 fps</br>
+                            Spatial photos and videos</br>
+                            Latest-generation Photographic Styles
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Up to 10x optical zoom range</strong>
+                        </td>
+                        <td><strong>Dynamic Island</strong></br></br>
+                            A magical way to interact with iPhone</br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Up to 33 hours video playback</strong>
+                        </td>
+                        <td><strong>USB‑C Supports USB 3</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Face ID</strong>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div>
-        <table>
-            <caption>Features</caption>
-            <tr>
-                <td><strong>6.3″ Display</strong></br></br>
-                    Super Retina XDR display footnote</br>
-                    ProMotion technology</br>
-                    Always-On display
-                </td>
-                <td><strong>A18 Pro chip with 6-core GPU</strong>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Camera Control</strong></br></br>
-                    Easier way to capture</br>
-                    Faster access to photo and video tools</br>
-                </td>
-                <td><strong>Pro camera system</strong></br></br>
-                    48MP Fusion | 48MP Ultra Wide | Telephoto</br>
-                    Super-high-resolution photos</br>
-                    (24MP and 48MP)</br>
-                    Next-generation portraits with Focus and Depth Control</br>
-                    48MP macro photography</br>
-                    Dolby Vision up to 4K at 120 fps</br>
-                    Spatial photos and videos</br>
-                    Latest-generation Photographic Styles
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Up to 10x optical zoom range</strong>
-                </td>
-                <td><strong>Dynamic Island</strong></br></br>
-                    A magical way to interact with iPhone</br>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Up to 33 hours video playback</strong>
-                </td>
-                <td><strong>USB‑C Supports USB 3</strong>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Face ID</strong>
-                </td>
-            </tr>
-        </table>
         <footer>
-            <a id="home" href="../index.html">Home</a>
+            <a id="home" href="../src/index.html">Home</a>
         </footer>
-        <script src="../darkMode.js"></script>
-        <script src="../screenWidth.js"></script>
+        <script src="../src/scripts/darkMode.js"></script>
+        <script src="../src/scripts/screenWidth.js"></script>
     </body>
 </html>

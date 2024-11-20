@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
     const unInput = document.getElementById("username");
     const pwInput = document.getElementById("password");
-    const confirmPwInput = document.getElementById("confirm_password"); 
+    const confirmPwInput = document.getElementById("confirm_password");
 
     //function for un check
     function checkUsername(username) {
@@ -46,31 +46,28 @@ document.addEventListener("DOMContentLoaded", () => {
         pwInput.addEventListener("input", () => {
             const isPasswordValid = checkPassword(pwInput.value);
             color(pwInput, isPasswordValid); // Update style for the password field
-    
+
             if (confirmPwInput) {
                 const passwordsMatch = checkPasswordMatch(pwInput.value, confirmPwInput.value);
                 color(confirmPwInput, isPasswordValid && passwordsMatch); // both check for confirmPassword
             }
         });
     }
-    
+
     if (confirmPwInput) {
         confirmPwInput.addEventListener("input", () => {
             const isPasswordValid = checkPassword(pwInput.value);
             const passwordsMatch = checkPasswordMatch(pwInput.value, confirmPwInput.value);
-    
+
             color(confirmPwInput, isPasswordValid && passwordsMatch); // both check for confirmPassword
         });
     }
-    
 
     //submission handler
     form.addEventListener("submit", (event) => {
         const usernameIsValid = unInput ? checkUsername(usernameInput.value) : true;
         const passwordIsValid = pwInput ? checkPassword(pwInput.value) : true;
-        const passwordsMatch = confirmPwInput
-            ? checkPasswordMatch(pwInput.value, confirmPwInput.value)
-            : true;
+        const passwordsMatch = confirmPwInput ? checkPasswordMatch(pwInput.value, confirmPwInput.value) : true;
 
         //msg and block if someth is wrong
         if (!usernameIsValid || !passwordIsValid || !passwordsMatch) {

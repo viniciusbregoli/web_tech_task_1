@@ -17,6 +17,26 @@ body {
     background-color: var(--background);
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    margin: 40px 0 10px 0;
+}
+
+#header-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#profile img {
+    width: 40px;
+    margin-left: 20px;
+}
+
+
 a {
     color: var(--textColor);
     text-decoration: none;
@@ -29,13 +49,14 @@ button {
     color: white; /* text color white */
     cursor: pointer;
     border: none;
-    padding: 10px; 
-    margin: 10px 0;  
-    border-radius: 4px;  
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
     font-size: 14px;
 }
 
-button:hover { /* hover effect for button */
+button:hover {
+    /* hover effect for button */
     background-color: #cc5200;
 }
 
@@ -50,7 +71,14 @@ footer a {
 }
 #home {
     color: #ff6600;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 20px;
 }
 #home:hover {
     font-weight: bold;
+}
+
+#logo img{
+    width: 60px;
 }

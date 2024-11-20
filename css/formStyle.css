@@ -1,17 +1,16 @@
-@import url('mystyle.css');
+@import url("mystyle.css");
 h1 {
     text-align: center;
-    margin-top: 40px;
 }
 
 /* container (form)*/
 form {
-    background-color: white; 
-    padding: 20px; 
-    border-radius: 8px;  /* Round the corners of the form by 8px */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* shadow around  */
-    width: 300px;  
-    margin: 0 auto;  /*form centered*/
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px; /* Round the corners of the form by 8px */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* shadow around  */
+    width: 300px;
+    margin: 0 auto; /*form centered*/
 }
 label {
     font-size: 14px;
@@ -19,69 +18,60 @@ label {
 }
 
 /* input fields and buttons */
-input[type="text"], input[type="password"], input[type="submit"], button {
-    width: 90%;  /* width of input fields and buttons to 90% of the container */
-    padding: 10px; 
-    margin: 10px 0;  
-    border: 1px solid #ccc;/*light gray border around the input fields and buttons */
-    border-radius: 4px;  
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+button {
+    width: 90%; /* width of input fields and buttons to 90% of the container */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc; /*light gray border around the input fields and buttons */
+    border-radius: 4px;
     font-size: 14px;
 }
 
 /*submit button*/
 input[type="submit"] {
     width: 100%;
-    background-color: #0066cc; 
-    color: white;  /* text color white */
-    cursor: pointer;  /* cursor to a pointer when hovering o*/
-    border: none;  
+    background-color: #0066cc;
+    color: white; /* text color white */
+    cursor: pointer; /* cursor to a pointer when hovering o*/
+    border: none;
     font-size: 14px;
 }
 input[type="submit"]:hover {
-    background-color: #004d99;  /* darker blue when hovered */
+    background-color: #004d99; /* darker blue when hovered */
 }
 
 /* register button */
 button {
     width: 100%;
-    background-color: #ff6600;  
-    color: white;  /* text color white */
-    cursor: pointer; 
-    border: none;  
+    background-color: #ff6600;
+    color: white; /* text color white */
+    cursor: pointer;
+    border: none;
 }
 button:hover {
-    background-color: #cc5200; 
+    background-color: #cc5200;
 }
 
 fieldset {
-    border: 2px solid #ccc;  
-    padding: 20px;  /* 20px padding in fieldset */
-    border-radius: 8px;  /* round the corners */
+    border: 2px solid #ccc;
+    padding: 20px; /* 20px padding in fieldset */
+    border-radius: 8px; /* round the corners */
 }
 legend {
-    font-size: 16px; 
-    font-weight: bold;  /*legend text bold */
+    font-size: 16px;
+    font-weight: bold; /*legend text bold */
     text-align: center;
     color: black;
 }
 
 /* Bottom link */
-footer {
+#logout {
+    font-size: 20px;
+    color: gray;
     text-align: center;
     padding: 20px 0;
-}
-footer a {
     display: block;
-    margin-bottom: 10px;
-}
-#home {
-    color: #ff6600;
-    text-decoration: none;
-}
-#home:hover {
-    font-weight: bold;
-}
-#logout {
-    font-size: 14px;
-    color: gray;
 }
