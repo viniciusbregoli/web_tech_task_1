@@ -18,13 +18,15 @@ header h1:hover {
     cursor: pointer;
 }
 
+/* product image and options container */
 #product-container {
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     text-align: center;
+    margin: 20px 0;
 }
 #product-container img {
     padding: 10px;
@@ -37,7 +39,7 @@ header h1:hover {
     text-align: start;
 }
 #product-option h1 {
-    margin-bottom: 40px;
+    margin: 40px 0 ;
 }
 #product-option p {
     font-size: 18px;
@@ -72,9 +74,6 @@ select {
     background-color: #dedede;
     border-radius: 10px;
 }
-select option {
-    border: 0px;
-}
 
 /* Style for Add to Cart button */
 input[type="submit"] {
@@ -100,7 +99,6 @@ caption {
     font-size: 24px;
     margin: 60px 0 20px 0;
 }
-
 td {
     text-align: center;
     background-color: white; 
@@ -108,6 +106,5 @@ td {
     padding: 20px; 
     border-radius: 8px;  /* Round the corners of the form by 8px */
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);  /* shadow around  */
-    width: 300px;  
-    margin: 0 auto;  /*form centered*/
+    width: 300px;
 }
