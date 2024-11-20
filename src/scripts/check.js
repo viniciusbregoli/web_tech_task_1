@@ -1,30 +1,67 @@
-//dom load
 document.addEventListener("DOMContentLoaded", () => {
-    //references from html file
+    //html references
     const form = document.querySelector("form");
     const unInput = document.getElementById("username");
     const pwInput = document.getElementById("password");
     const confirmPwInput = document.getElementById("confirm_password");
+    const submitButton = form.querySelector('input[type="submit"]');
 
-    //function for un check
+    // helper for validation (text)
+    const unMessage = document.createElement("span");
+    const pwMessage = document.createElement("span");
+    const confirmPwMessage = document.createElement("span");
+
+    // font styling
+    const messageStyle = "color: red; font-size: 12px; display: block; margin-top: 5px;";
+    unMessage.style.cssText = messageStyle;
+    pwMessage.style.cssText = messageStyle;
+    confirmPwMessage.style.cssText = messageStyle;
+
+    unInput.insertAdjacentElement("afterend", unMessage);
+    pwInput.insertAdjacentElement("afterend", pwMessage);
+    confirmPwInput && confirmPwInput.insertAdjacentElement("afterend", confirmPwMessage);
+
+    //checks if the field has been interacted
+    let touchUN = false;
+    let touchPW = false;
+    let touchConfirmPW = false;
+
+    //validation things
     function checkUsername(username) {
-        const hasMinLength = username.length >= 5;
-        const hasUpperCase = /[A-Z]/.test(username);
-        const hasLowerCase = /[a-z]/.test(username);
+        const trimUsername = username.replace(/\s+/g, ""); 
+        const hasMinLength = trimUsername.length >= 5;
+        const hasUpperCase = /[A-Z]/.test(trimUsername);
+        const hasLowerCase = /[a-z]/.test(trimUsername);
+
+        if (touchUN) {
+            if (!hasMinLength) {
+                unMessage.textContent = "Username must be at least 5 characters long.";
+            } else if (!hasUpperCase || !hasLowerCase) {
+                unMessage.textContent = "Username must contain uppercase and lowercase letters.";
+            } else {
+                unMessage.textContent = "";
+            }
+        }
+
         return hasMinLength && hasUpperCase && hasLowerCase;
     }
 
-    //check password
     function checkPassword(password) {
-        return password.length >= 10;
+        const isValid = password.length >= 10;
+        if (touchPW) {
+            pwMessage.textContent = isValid ? "" : "Password must be at least 10 characters long.";
+        }
+        return isValid;
     }
 
-    //check password match (registration)
     function checkPasswordMatch(password, confirmPassword) {
-        return password === confirmPassword;
+        const isValid = password === confirmPassword;
+        if (touchConfirmPW) {
+            confirmPwMessage.textContent = isValid ? "" : "Passwords do not match.";
+        }
+        return isValid;
     }
 
-    // color stuff
     function color(field, isValid) {
         if (isValid) {
             field.style.border = "2px solid green";
@@ -33,46 +70,66 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // real time check for username
-    if (unInput) {
-        unInput.addEventListener("input", () => {
-            const isValid = checkUsername(unInput.value);
-            color(unInput, isValid);
-        });
-    }
-
-    // real time check for password
-    if (pwInput) {
-        pwInput.addEventListener("input", () => {
-            const isPasswordValid = checkPassword(pwInput.value);
-            color(pwInput, isPasswordValid); // Update style for the password field
-
-            if (confirmPwInput) {
-                const passwordsMatch = checkPasswordMatch(pwInput.value, confirmPwInput.value);
-                color(confirmPwInput, isPasswordValid && passwordsMatch); // both check for confirmPassword
-            }
-        });
-    }
-
-    if (confirmPwInput) {
-        confirmPwInput.addEventListener("input", () => {
-            const isPasswordValid = checkPassword(pwInput.value);
-            const passwordsMatch = checkPasswordMatch(pwInput.value, confirmPwInput.value);
-
-            color(confirmPwInput, isPasswordValid && passwordsMatch); // both check for confirmPassword
-        });
-    }
-
-    //submission handler
-    form.addEventListener("submit", (event) => {
-        const usernameIsValid = unInput ? checkUsername(usernameInput.value) : true;
+    // submit button things
+    function updateSubmitButtonState() {
+        const usernameIsValid = unInput ? checkUsername(unInput.value) : true;
         const passwordIsValid = pwInput ? checkPassword(pwInput.value) : true;
         const passwordsMatch = confirmPwInput ? checkPasswordMatch(pwInput.value, confirmPwInput.value) : true;
 
-        //msg and block if someth is wrong
+        // button gets disabled if someth is wrong
+        submitButton.disabled = !usernameIsValid || !passwordIsValid || !passwordsMatch;
+    }
+
+    // real time check for username
+    if (unInput) {
+        unInput.addEventListener("input", () => {
+            touchUN = true;
+            const isValid = checkUsername(unInput.value);
+            color(unInput, isValid);
+            updateSubmitButtonState();
+        });
+    }
+
+    // real time check for passw
+    if (pwInput) {
+        pwInput.addEventListener("input", () => {
+            touchPW = true;
+            const isValid = checkPassword(pwInput.value);
+            color(pwInput, isValid);
+
+            if (confirmPwInput) {
+                const passwordsMatch = checkPasswordMatch(pwInput.value, confirmPwInput.value);
+                color(confirmPwInput, isValid && passwordsMatch);
+            }
+            updateSubmitButtonState();
+        });
+    }
+
+    //real time check for pasword conf
+    if (confirmPwInput) {
+        confirmPwInput.addEventListener("input", () => {
+            touchConfirmPW = true;
+            const isValid = checkPassword(pwInput.value);
+            const passwordsMatch = checkPasswordMatch(pwInput.value, confirmPwInput.value);
+
+            color(confirmPwInput, isValid && passwordsMatch);
+            updateSubmitButtonState();
+        });
+    }
+
+    // initial button state check
+    updateSubmitButtonState();
+
+    // prevent form submission if validation fails
+    form.addEventListener("submit", (event) => {
+        const usernameIsValid = checkUsername(unInput.value);
+        const passwordIsValid = checkPassword(pwInput.value);
+        const passwordsMatch = confirmPwInput ? checkPasswordMatch(pwInput.value, confirmPwInput.value) : true;
+
         if (!usernameIsValid || !passwordIsValid || !passwordsMatch) {
-            event.preventDefault(); //doesnt submit
-            alert("Please correct the highlighted fields before submitting.");
+            event.preventDefault(); // stop the form from submitting if validation fails
+        } else {
+            alert("Registration successful!");
         }
     });
 });
