@@ -49,7 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkPassword(password) {
         const isValid = password.length >= 10;
         if (touchPW) {
-            pwMessage.textContent = isValid ? "" : "Password must be at least 10 characters long.";
+            if (isValid){
+                pwMessage.textContent="";
+            }
+            else{
+                pwMessage.textContent="Password must be at least 10 characters long.";
+            }
         }
         return isValid;
     }
@@ -81,18 +86,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // real time check for username
-    if (unInput) {
-        unInput.addEventListener("input", () => {
-            touchUN = true;
-            const isValid = checkUsername(unInput.value);
-            color(unInput, isValid);
-            updateSubmitButtonState();
-        });
-    }
+    unInput.addEventListener("input", () => {
+        touchUN = true;
+        const isValid = checkUsername(unInput.value);
+        color(unInput, isValid);
+        updateSubmitButtonState();
+    });
 
     // real time check for passw
-    if (pwInput) {
-        pwInput.addEventListener("input", () => {
+
+    pwInput.addEventListener("input", () => {
             touchPW = true;
             const isValid = checkPassword(pwInput.value);
             color(pwInput, isValid);
@@ -103,11 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             updateSubmitButtonState();
         });
-    }
+    
 
     //real time check for pasword conf
-    if (confirmPwInput) {
-        confirmPwInput.addEventListener("input", () => {
+
+    confirmPwInput.addEventListener("input", () => {
             touchConfirmPW = true;
             const isValid = checkPassword(pwInput.value);
             const passwordsMatch = checkPasswordMatch(pwInput.value, confirmPwInput.value);
@@ -115,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             color(confirmPwInput, isValid && passwordsMatch);
             updateSubmitButtonState();
         });
-    }
+    
 
     // initial button state check
     updateSubmitButtonState();
