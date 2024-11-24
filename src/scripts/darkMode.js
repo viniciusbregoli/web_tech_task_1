@@ -1,6 +1,6 @@
 // Change the mode of the site
 function updateDarkMode(darkMode) {
-    var baseImgPath = document.getElementById("dark-mode").getAttribute("data-img-path")
+    const baseImgPath = document.getElementById("dark-mode").getAttribute("data-img-path")
     
     localStorage.setItem("darkMode", darkMode.toString());
     document.documentElement.setAttribute("color-theme", darkMode ? "dark" : "light");
@@ -21,7 +21,7 @@ function setDarkMode() {
 
 // When the user clicks the Dark Mode button
 function switchDarkMode() {
-    var darkMode = localStorage.getItem("darkMode") === 'true';
+    const darkMode = localStorage.getItem("darkMode") === 'true';
     updateDarkMode(!darkMode)
 }
 
