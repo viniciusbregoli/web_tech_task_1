@@ -60,11 +60,12 @@ button:hover {
     background-color: #cc5200;
 }
 
-/* Bottom link */
 footer {
     text-align: center;
     padding: 20px 0;
 }
+
+/* Bottom link */
 footer a {
     display: block;
     margin-bottom: 10px;
@@ -76,9 +77,23 @@ footer a {
     margin-top: 20px;
 }
 #home:hover {
-    font-weight: bold;
+   font-weight: bold;
 }
 
+/* dark mode icon */
+#dark-mode {
+    width: 40px;
+    padding: 12px;
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2); /* shadow around  */
+    border-radius: 100%;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+}
+#dark-mode:hover {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3); /* shadow around  */
+}
 #logo img{
     width: 60px;
 }
