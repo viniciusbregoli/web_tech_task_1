@@ -4,10 +4,11 @@
 function addToCollection() {
     const productName = document.querySelector("h1").innerText;
     const quantity = document.getElementById("quantity").value;
+    const color = document.getElementById("color").value;
     const collectionItems = document.getElementById("collection-items");
 
     const listItem = document.createElement("li");
-    listItem.innerText = `${productName} - Quantity: ${quantity}`;
+    listItem.innerText = `${productName} - Quantity: ${quantity} - Color: ${color}`;
     collectionItems.appendChild(listItem);
 }
 
@@ -31,31 +32,51 @@ function updatePrices() {
 
 // SECOND PART: ADDITIONAL FUNCTIONALITY
 
-// Function to apply discount
 function applyDiscount(discountRate) {
-    const priceWOTax = parseFloat(document.getElementById("priceWOTax").value); // Ensure 0 is used if input is empty or invalid
-    console.log(priceWOTax);
+    if (discountRate < 0 || discountRate > 1) {
+        console.error("Invalid discount rate. It should be between 0 and 1.");
+        return;
+    }
+
+    const priceWOTaxElement = document.getElementById("priceWOTax");
+    const priceWOTax = parseFloat(priceWOTaxElement.value) || 0; // Ensure 0 is used if input is empty or invalid
+
     const discountedPrice = priceWOTax * (1 - discountRate);
+    const totalPriceWithTax = getTotalPrice(discountedPrice);
 
-    document.getElementById("priceWithTax").innerText = `Price with Tax (Discounted): €${getTotalPrice(discountedPrice).toFixed(2)}`;
+    document.getElementById("priceWithTax").innerText = `Price with Tax (Discounted): €${totalPriceWithTax.toFixed(2)}`;
+    console.log(
+        `Applied discount: ${discountRate * 100}%. Original price: €${priceWOTax.toFixed(2)}, Discounted price: €${discountedPrice.toFixed(
+            2
+        )}, Total price with tax: €${totalPriceWithTax.toFixed(2)}`
+    );
 }
 
-// Function to reset prices
 function resetPrices() {
-    document.getElementById("priceWOTax").value = 0;
-    updatePrices();
+    const confirmation = confirm("Are you sure you want to reset the prices?");
+    if (confirmation) {
+        document.getElementById("priceWOTax").value = 1199;
+        updatePrices();
+        console.log("Prices have been reset to the default value.");
+    } else {
+        console.log("Price reset action was canceled.");
+    }
 }
 
-// Function to clear the collection list
+function updatePrices() {
+    const priceWOTax = parseFloat(document.getElementById("priceWOTax").value) || 0;
+    const totalPriceWithTax = getTotalPrice(priceWOTax);
+    document.getElementById("priceWithTax").innerText = `Price with Tax: €${totalPriceWithTax.toFixed(2)}`;
+}
+
 function clearCollection() {
-    const collectionItems = document.getElementById("collection-items");
-    collectionItems.innerHTML = "";
-}
-
-// Function to validate quantity input
-function validateQuantity(input) {
-    if (input.value < 1) {
-        input.value = 1;
+    const confirmation = confirm("Are you sure you want to clear the collection list?");
+    if (confirmation) {
+        const collectionItems = document.getElementById("collection-items");
+        collectionItems.innerHTML = "";
+        console.log("Collection list has been cleared.");
+    } else {
+        console.log("Clear collection action was canceled.");
     }
 }
 
