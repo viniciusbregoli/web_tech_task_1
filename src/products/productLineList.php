@@ -75,5 +75,6 @@ $modelList = isset($brandModels[$model]) ? $brandModels[$model] : [];
     </footer>
     <img id="dark-mode" src="../../assets/moon.png" alt="Dark Mode" data-img-path="../../assets/" />
     <script src="../scripts/darkMode.js"></script>
+    <script src="../scripts/screenWidth.js"></script>
 </body>
 </html>
