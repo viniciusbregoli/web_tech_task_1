@@ -30,7 +30,7 @@ $products = [
             "<strong>Dynamic Island</strong></br></br>
             A magical way to interact with iPhone</br>",
 
-            "strong>Up to 33 hours video playback</strong>",
+            "<strong>Up to 33 hours video playback</strong>",
 
             "<strong>USB‑C Supports USB 3</strong>",
 
