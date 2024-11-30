@@ -5,7 +5,7 @@ $navItems = [
         "generalLink" => "/myWebShop/src/products/productList.php?brand=Samsung",  
         "models" => [
             "Galaxy Note" => "/myWebShop/src/products/productLineList.php?brand=Samsung&model=Galaxy+Note",
-            "Galaxy Flip" => "/myWebShop/src/products/productLineList.php?brand=Samsung&model=Galaxy+Flip"
+            "Galaxy Z Flip" => "/myWebShop/src/products/productLineList.php?brand=Samsung&model=Galaxy+Z+Flip"
         ]
     ],
     "Apple" => [

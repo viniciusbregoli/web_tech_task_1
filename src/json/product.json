@@ -1,0 +1,259 @@
+{
+    "product": [
+        {
+            "pid": 100,
+            "name": "Galaxy Note 10",
+            "description": [
+                "<strong>6.3″ Full Rectangle Display</strong>\n\nDynamic AMOLED\n",
+                "<strong>Octa-Core CPU</strong>",
+                "<strong>Auto Focus</strong>",
+                "<strong>Optical Zoom at 2x , Digital Zoom up to 10x</strong>",
+                "<strong>UHD 4K (3840 x 2160)@60fps Video Recording Resolution</strong>"
+            ],
+            "imagepath": "https://m.media-amazon.com/images/I/51NrtwFcK0L.jpg",
+            "price": 212,
+            "category": "Samsung",
+            "subcategory": "Galaxy Note",
+            "colors": ["Aura Black", "Aura Glow", "Aura White", "Aura Pink"],
+            "storage": [128, 256, 512] 
+        },
+        {
+            "pid": 101,
+            "name": "Galaxy Note 20",
+            "description": [
+                "<strong>6.9″ Full Rectangle Display</strong>\n\nDynamic AMOLED 2X\n",
+                "<strong>Octa-Core CPU</strong>",
+                "<strong>Auto Focus</strong>",
+                "<strong>Optical Zoom at 5x , Digital Zoom up to 50x</strong>",
+                "<strong>UHD 8K (7680 x 4320)@24fps Video Recording Resolution</strong>"
+            ],
+            "imagepath": "https://www.backmarket.de/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D1080/https://d2e6ccujb3mkqf.cloudfront.net/e92a33f6-6986-4703-9ebf-e98cdb364a80-1_a215923e-d826-4d87-a739-8023efadd638.jpg",
+            "price": 352,
+            "category": "Samsung",
+            "subcategory": "Galaxy Note",
+            "colors": ["Mystic Bronze", "Mystic Black", "Mystic White"],
+            "storage": [128, 256, 512] 
+        },
+        {
+            "pid": 110,
+            "name": "Galaxy Z Flip 5",
+            "description": [
+                "<strong>6.7″ Full Rectangle Display 6.6″ Rounded Corners</strong>\n\nDynamic AMOLED 2X\n",
+                "<strong>Octa-Core CPU</strong>",
+                "<strong>Auto Focus</strong>",
+                "<strong>Digital Zoom up to 10x</strong>",
+                "<strong>UHD 4K (3840 x 2160)@60fps Video Recording Resolution</strong>"
+            ],
+            "imagepath": "https://www.dimprice.de/image/cache/catalog/Samsung/samsung-galaxy-z-flip5-de-lavender-1-843x1080.png",
+            "price": 456,
+            "category": "Samsung",
+            "subcategory": "Galaxy Z Flip",
+            "colors": ["Gray", "Green", "Blue", "Yellow", "Mint", "Cream"],
+            "storage": [256, 512] 
+        },
+        {
+            "pid": 111,
+            "name": "Galaxy Z Flip 6",
+            "description": [
+                "<strong>6.7″ Full Rectangle Display 6.6″ Rounded Corners</strong>\n\nDynamic AMOLED 2X\n",
+                "<strong>Octa-Core CPU</strong>",
+                "<strong>Auto Focus</strong>",
+                "<strong>Optical quality Zoom 2x (Enabled by Adaptive Pixel sensor) , Digital Zoom up to 10x</strong>",
+                "<strong>UHD 4K (3840 x 2160)@60fps</strong>"
+            ],
+            "imagepath": "https://dashandy.de/media/catalog/product/cache/e899a72674f6b87d0b17f03f8ab4ca04/8/8/8806095614724_x5.jpg",
+            "price": 832,
+            "category": "Samsung",
+            "subcategory": "Galaxy Z Flip",
+            "colors": ["Silver Shadow", "Mint", "Blue", "Yellow", "Peach", "White"],
+            "storage": [256, 512] 
+        },
+        {
+            "pid": 200,
+            "name": "iPhone 16 Pro",
+            "description": [
+                "<strong>6.3″ Display</strong>\n\nSuper Retina XDR display\nProMotion technology\nAlways-On display",
+                "<strong>A18 Pro chip with 6-core GPU</strong>",
+                "<strong>Camera Control</strong>\n\nEasier way to capture\nFaster access to photo and video tools\n",
+                "<strong>Pro camera system</strong>\n\n48MP Fusion | 48MP Ultra Wide | Telephoto\nSuper-high-resolution photos\n(24MP and 48MP)\nNext-generation portraits with Focus and Depth Control\n48MP macro photography\nDolby Vision up to 4K at 120 fps\nSpatial photos and videos\nLatest-generation Photographic Styles",
+                "<strong>Up to 10x optical zoom range</strong>",
+                "<strong>Dynamic Island</strong>\n\nA magical way to interact with iPhone\n",
+                "<strong>Up to 33 hours video playback</strong>",
+                "<strong>USB‑C Supports USB 3</strong>",
+                "<strong>Face ID</strong>"
+            ],
+            "imagepath": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-blacktitanium?wid=5120&hei=2880&fmt=webp&qlt=70&.v=eUdsd0dIb3VUOXdtWkY0VFUwVE8vbEdkZHNlSjBQRklnaFB2d3I5MW94NzFzS1BRRzA4NTJUci9vckVTY21rM2lCQmV2WTA2cncybDF2YzFnKzI0S2prMCtUNWwzYWR0UVU3TWVsbEdUeXZka3Q2dVFYV2lxTm4wNXBJcGZoM1RkcERRMUVIWTBwNlRNS3dVelNTTTVB&traceId=1",
+            "price": 999,
+            "category": "Apple",
+            "subcategory": "iPhone Pro",
+            "colors": ["Desert Titanium", "Natural Titanium", "White Titanium", "Black Titanium"],
+            "storage": [128, 256, 512, 1000] 
+        },
+        {
+            "pid": 201,
+            "name": "iPhone 16 Pro Max",
+            "description": [
+                "<strong>6.9″ Display</strong>\n\nSuper Retina XDR display\nProMotion technology\nAlways-On display",
+                "<strong>A18 Pro chip with 6-core GPU</strong>",
+                "<strong>Camera Control</strong>\n\nEasier way to capture\nFaster access to photo and video tools\n",
+                "<strong>Pro camera system</strong>\n\n48MP Fusion | 48MP Ultra Wide | Telephoto\nSuper-high-resolution photos\n(24MP and 48MP)\nNext-generation portraits with Focus and Depth Control\n48MP macro photography\nDolby Vision up to 4K at 120 fps\nSpatial photos and videos\nLatest-generation Photographic Styles",
+                "<strong>Up to 10x optical zoom range</strong>",
+                "<strong>Dynamic Island</strong>\n\nA magical way to interact with iPhone\n",
+                "<strong>Up to 33 hours video playback</strong>",
+                "<strong>USB‑C Supports USB 3</strong>",
+                "<strong>Face ID</strong>"
+            ],
+            "imagepath": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-storage-select-202409-6-9inch-whitetitanium?wid=5120&hei=2880&fmt=webp&qlt=70&.v=cHljZ3VQbTFnaDEvbFVKOExvRXVPbEIvTXY5NjBUQVhVcnFORUt4SFI2QjZWa0tEKzJJVCt5eTJFK2JJWGNCaSs0TUpxVnlUVzdUUzFWcnFmdUNUYVNSTUMybCtXNXZpclhWeFpYZUcvRk80dEcwRGlZdHZNUlUyQVJ1QXFtSFFyMHcrM3ZYajViVWN1YS9acllvclpn&traceId=1",
+            "price": 1199,
+            "category": "Apple",
+            "subcategory": "iPhone Pro",
+            "colors": ["Desert Titanium", "Natural Titanium", "White Titanium", "Black Titanium"],
+            "storage": [128, 256, 512, 1000] 
+        },
+        {
+            "pid": 210,
+            "name": "iPhone SE",
+            "description": [
+                "<strong>4.7″ Display</strong>\n\nRetina HD display\n",
+                "<strong>A15 Bionic chip with 4-core GPU</strong>",
+                "<strong>Single-camera system</strong>\n\n12MP Main\nPortrait mode with Depth Control",
+                "<strong>1x optical zoom range</strong>",
+                "<strong>Up to 15 hours video playback</strong>",
+                "<strong>Lightning Supports USB 2</strong>",
+                "<strong>Touch ID</strong>"
+            ],
+            "imagepath": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-se-finish-unselect-gallery-1-202207?wid=5120&hei=2880&fmt=webp&qlt=70&.v=VEhreGxMWU8vckorVEJ3dVU2RjJZZFgrSXpWVEhWaW9YTGlWRHFoSHU0L3R6NnhRaHBRWDl3NFJZMDZlMGtTTWd2S3NaRzcrU0dmYjNHTUFiMnlsWFRocXAvNjVVaCtjTTZGTUNzOU8wNkdHQitiblNSUmw5N2I0WHR6NmEySjM&traceId=1",
+            "price": 429,
+            "category": "Apple",
+            "subcategory": "iPhone SE",
+            "colors": ["Midnight", "Starlight", "Red"],
+            "storage": [64, 128, 256] 
+        },
+        {
+            "pid": 211,
+            "name": "iPhone SE 2",
+            "description": [
+                "<strong>4.7″ Display</strong>\n\nRetina HD display\n",
+                "<strong>A13 Bionic chip with 4-core GPU</strong>",
+                "<strong>Single-camera system</strong>\n\n12MP Main\nPortrait mode advanced bokeh and Depth Control",
+                "<strong>Digital zoom up to 5x</strong>",
+                "<strong>Up to 13 hours video playback</strong>",
+                "<strong>Touch ID</strong>"
+            ],
+            "imagepath": "https://cdn.alloallo.media/catalog/product/apple/iphone/iphone-se/iphone-se-white.jpg",
+            "price": 472,
+            "category": "Apple",
+            "subcategory": "iPhone SE",
+            "colors": ["Black", "White", "Red"],
+            "storage": [64, 128, 256] 
+        },
+        {
+            "pid": 220,
+            "name": "iPhone MINI 12",
+            "description": [
+                "<strong>5.4″ Display</strong>\n\nSuper Retina XDR display\n",
+                "<strong>A14 Bionic chip with 4-core GPU</strong>",
+                "<strong>Wide and Ultra Wide cameras</strong>\n\nDual 12MP\nPortrait mode advanced bokeh and Depth Control",
+                "<strong>Digital zoom up to 5x</strong>",
+                "<strong>Up to 15 hours video playback</strong>",
+                "<strong>Face ID</strong>"
+            ],
+            "imagepath": "https://m.media-amazon.com/images/I/71sNNCTfMuL.jpg",
+            "price": 278,
+            "category": "Apple",
+            "subcategory": "iPhone MINI",
+            "colors": ["Black", "White", "Red", "Green", "Blue", "Purple"],
+            "storage": [64, 128, 256] 
+        },
+        {
+            "pid": 221,
+            "name": "iPhone MINI 13",
+            "description": [
+                "<strong>5.4″ Display</strong>\n\nSuper Retina XDR display\n",
+                "<strong>A15 Bionic chip with 4-core GPU</strong>",
+                "<strong>Main and Ultra Wide cameras</strong>\n\nDual 12MP\nPortrait mode with advanced bokeh and Depth Control",
+                "<strong>Digital zoom up to 5x</strong>",
+                "<strong>Up to 17 hours video playback</strong>",
+                "<strong>Face ID</strong>"
+            ],
+            "imagepath": "https://i.ebayimg.com/images/g/kXQAAOSwJB9ijDsk/s-l400.jpg",
+            "price": 376,
+            "category": "Apple",
+            "subcategory": "iPhone MINI",
+            "colors": ["Starlight", "Midnight", "Red", "Blue", "Green", "Pink"],
+            "storage": [128, 256, 512] 
+        },
+        {
+            "pid": 300,
+            "name": "Google Pixel 8",
+            "description": [
+                "<strong>6.2″-Vollbild-Display(157 mm) display</strong>\n\nActua-Display\n",
+                "<strong>Google Tensor G3</strong>\n\nTitan M2 security chip\n",
+                "<strong>Smooth display (60–120 Hz)</strong>",
+                "<strong>Fast wireless charging (Qi certified)</strong>",
+                "<strong>More than 24 hours of battery life</strong>\n\nUp to 72 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>Always-on display with live display and now playing</strong>"
+            ],
+            "imagepath": "https://priceinto.pk/wp-content/uploads/2024/09/Google-Pixel-8-Price-in-Pakistan-2.webp",
+            "price": 448,
+            "category": "Google",
+            "subcategory": "Google Pixel",
+            "colors": ["Hazel", "Mint", "Obsidian", "Rose"],
+            "storage": [128, 256] 
+        },
+        {
+            "pid": 301,
+            "name": "Google Pixel 9",
+            "description": [
+                "<strong>1080×2424 with OLED at 422ppi</strong>\n\n160mm Actua full-screen display\n",
+                "<strong>Google Tensor G4</strong>\n\nTitan M2 security chip\n",
+                "<strong>Smooth display (60–120 Hz)</strong>",
+                "<strong>Fast wireless charging (Qi certified)</strong>",
+                "<strong>More than 24 hours of battery life</strong>\n\nUp to 100 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>VPN from Google at no extra charge</strong>"
+            ],
+            "imagepath": "https://lh3.googleusercontent.com/5AWVOm4Mr9WJjInCyKJByw9bFVC0N8XL1D-M0SQx7BohDYYjpXap_LY8MBN2f3qBPp62HxyEyCZioMEEYeTSjA6Av6RUJZFVlQ",
+            "price": 560,
+            "category": "Google",
+            "subcategory": "Google Pixel",
+            "colors": ["Peony", "Wintergreen", "Porcelain", "Obsidian"],
+            "storage": [128, 256] 
+        },
+        {
+            "pid": 310,
+            "name": "Google Pixel 9 Pro",
+            "description": [
+                "<strong>1280×2856 LTPO OLED at 495ppi</strong>\n\n161mm Super Actua display (LTPO)\n",
+                "<strong>Google Tensor G4</strong>\n\nTitan M2 security chip\n",
+                "<strong>Smooth display (1–120 Hz)</strong>",
+                "<strong>Fast wireless charging (Qi certified)</strong>",
+                "<strong>More than 24 hours of battery life</strong>\n\nUp to 100 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>VPN from Google at no extra charge</strong>"
+            ],
+            "imagepath": "https://cdn.movertix.com/media/catalog/product/cache/image/1200x/g/o/google-pixel-9-pro-xl-5g-rose-quartz-256gb.jpg",
+            "price": 999,
+            "category": "Google",
+            "subcategory": "Google Pixel Pro",
+            "colors": ["Porcelain", "Rose Quartz", "Hazel", "Obsidian"],
+            "storage": [128, 256, 512, 1000] 
+        },
+        {
+            "pid": 311,
+            "name": "Google Pixel 9 Pro Fold",
+            "description": [
+                "<strong>2076×2152 with OLED at 373ppi</strong>\n\n204 mm Super Actua-Flex full-screen display (LTPO)\n",
+                "<strong>Google Tensor G4</strong>\n\nTitan M2 security chip\n",
+                "<strong>Smooth display (60–120 Hz)</strong>",
+                "<strong>Multi-alloy steel with a cover made of a high-strength aluminum alloy in aviation quality</strong>",
+                "<strong>More than 24 hours of battery life</strong>\n\nUp to 72 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>VPN from Google at no extra charge</strong>"
+            ],
+            "imagepath": "https://mobile.1und1.de/_catalog/images/f5e37fc1fd35eb2e7208ee6e0d1b4fc4-img-google-pixel-9-Pro-Fold-obsidian-rechts.png",
+            "price": 1399,
+            "category": "Google",
+            "subcategory": "Google Pixel Pro",
+            "colors": ["Porcelain", "Obsidian"],
+            "storage": [256, 512] 
+        }
+    ]
+}

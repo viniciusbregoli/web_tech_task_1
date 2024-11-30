@@ -2,24 +2,24 @@
 // Define product data for each brand
 $brandProducts = [
     "Apple" => [
-        "iPhone MINI 12" => "product.php?brand=Apple&model=iphone_16_pro",
-        "iPhone MINI 13" => "product.php?brand=Apple&model=iphone_16_pro",
-        "iPhone PRO 16" => "product.php?brand=Apple&model=iphone_16_pro",
-        "iPhone PRO 16 Max" => "product.php?brand=Apple&model=iphone_16_pro",
-        "iPhone SE 2" => "product.php?brand=Apple&model=iphone_16_pro",
-        "iPhone SE 3" => "product.php?brand=Apple&model=iphone_16_pro",
+        "iPhone MINI 12" => "product.php?pid=220",
+        "iPhone MINI 13" => "product.php?pid=221",
+        "iPhone PRO 16" => "product.php?pid=200",
+        "iPhone PRO 16 Max" => "product.php?pid=201",
+        "iPhone SE 2" => "product.php?pid=210",
+        "iPhone SE 3" => "product.php?pid=211",
     ],
     "Samsung" => [
-        "Galaxy Note 10" => "product.php?brand=Apple&model=iphone_16_pro",
-        "Galaxy Note 20" => "product.php?brand=Apple&model=iphone_16_pro",
-        "Galaxy Flip 5" => "product.php?brand=Apple&model=iphone_16_pro",
-        "Galaxy Flip 6" => "product.php?brand=Apple&model=iphone_16_pro",
+        "Galaxy Note 10" => "product.php?pid=100",
+        "Galaxy Note 20" => "product.php?pid=101",
+        "Galaxy Z Flip 5" => "product.php?pid=110",
+        "Galaxy Z Flip 6" => "product.php?pid=111",
     ],
     "Google" => [
-        "Pixel 8" => "product.php?brand=Apple&model=iphone_16_pro",
-        "Pixel 9" => "product.php?brand=Apple&model=iphone_16_pro",
-        "Pixel 9 Pro" => "product.php?brand=Apple&model=iphone_16_pro",
-        "Pixel 9 Pro Fold" => "product.php?brand=Apple&model=iphone_16_pro",
+        "Pixel 8" => "product.php?pid=300",
+        "Pixel 9" => "product.php?pid=301",
+        "Pixel 9 Pro" => "product.php?pid=310",
+        "Pixel 9 Pro Fold" => "product.php?pid=311",
     ]
 ];
 

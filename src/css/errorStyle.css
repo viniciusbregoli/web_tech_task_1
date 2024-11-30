@@ -1,0 +1,32 @@
+@import url("mystyle.css");
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 80px;
+    margin-top: 180px;
+    margin-bottom: 40px;
+}
+
+h1 {
+    margin-top: 8px;
+}
+
+span {
+    font-size: 14px;
+    color: #FEC048;
+}
+
+p {
+    color: gray;
+}
+
+a {
+    font-weight: bold;
+}

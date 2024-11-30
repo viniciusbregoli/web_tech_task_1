@@ -1,55 +1,28 @@
 <?php
-// Define product data (this can be expanded or fetched from a database)
-$products = [
-    "iphone_16_pro" => [
-        "name" => "iPhone 16 Pro",
-        "image" => "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=384&hei=512&fmt=jpeg&qlt=90&.v=1724187552442",
-        "price" => 1199,
-        "description" => [
-            "<strong>6.3″ Display</strong><br><br>Super Retina XDR display
-            <br>ProMotion technology
-            <br>Always-On display",
 
-            "<strong>A18 Pro chip with 6-core GPU</strong>",
+$json = file_get_contents('../json/product.json');
+$products = json_decode($json, true);
+$product = null;
 
-            "<strong>Camera Control</strong></br></br>
-            Easier way to capture</br>
-            Faster access to photo and video tools</br>",
-
-            "<strong>Pro camera system</strong></br></br>
-            48MP Fusion | 48MP Ultra Wide | Telephoto</br>
-            Super-high-resolution photos</br>
-            (24MP and 48MP)</br>
-            Next-generation portraits with Focus and Depth Control</br>
-            48MP macro photography</br>
-            Dolby Vision up to 4K at 120 fps</br>
-            Spatial photos and videos</br>
-            Latest-generation Photographic Styles",
-
-            "<strong>Up to 10x optical zoom range</strong>",
-            "<strong>Dynamic Island</strong></br></br>
-            A magical way to interact with iPhone</br>",
-
-            "<strong>Up to 33 hours video playback</strong>",
-
-            "<strong>USB‑C Supports USB 3</strong>",
-
-            "<strong>Face ID</strong>",
-        ],
-        "colors" => ["Desert Titanium", "Natural Titanium", "White Titanium", "Black Titanium"],
-        "storage" => [128, 256, 512, 1000] // GB options
-    ],
-];
-
-// Get the product from the query parameter (e.g., ?product=iphone_16_pro)
-$productKey = isset($_GET['product']) ? $_GET['product'] : 'iphone_16_pro'; // Default to iPhone 16 Pro if no product is selected
-
-// Check if the product exists
-if (!array_key_exists($productKey, $products)) {
-    $productKey = 'iphone_16_pro'; // Fallback to iPhone 16 Pro if the product is not found
+if(isset($_GET["pid"])) {
+    $pid = $_GET["pid"];
+    if(empty($pid)) {
+        //echo "No value fo the parameter!";
+        header("location: ../error.php");
+    } else {
+        if(isset($products['product'])) {
+            foreach($products['product'] as $p) {
+                if($p['pid'] == $pid) {
+                    $product = $p;
+                    break;
+                }
+            }
+        }
+    }
+} else {
+    //echo "Parameter is missing!";
+    header("location: ../error.php");
 }
-
-$product = $products[$productKey];
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +43,7 @@ $product = $products[$productKey];
     </header>
     <div id="product-info">
         <div id="product-container">
-            <img src="<?php echo $product['image']; ?>" alt="Product Image">
+            <img src="<?php echo $product['imagepath']; ?>" alt="Product Image">
             <div id="product-option">
                 <label for="priceWOTax">Price without taxes (€):</label>
                 <input type="number" id="priceWOTax" step="100" value="<?php echo $product['price']; ?>" oninput="updatePrices()">
@@ -112,10 +85,18 @@ $product = $products[$productKey];
         <div>
             <table>
                 <caption>Features</caption>
+
+                <!-- Display in a table with two columns -->
+                <?php $i = 0; ?>
                 <?php foreach ($product['description'] as $feature): ?>
-                    <tr>
+                    <?php if ($i % 2 == 0): ?>
+                        <tr>
+                    <?php endif; ?>
                         <td><?php echo $feature; ?></td>
-                    </tr>
+                    <?php if ($i % 2 == 1): ?>
+                        </tr>
+                    <?php endif; ?>
+                    <?php $i++; ?>
                 <?php endforeach; ?>
             </table>
         </div>
