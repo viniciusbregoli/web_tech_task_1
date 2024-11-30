@@ -4,7 +4,7 @@
             "pid": 100,
             "name": "Galaxy Note 10",
             "description": [
-                "<strong>6.3″ Full Rectangle Display</strong>\n\nDynamic AMOLED\n",
+                "<strong>6.3″ Full Rectangle Display</strong></br></br>Dynamic AMOLED</br>",
                 "<strong>Octa-Core CPU</strong>",
                 "<strong>Auto Focus</strong>",
                 "<strong>Optical Zoom at 2x , Digital Zoom up to 10x</strong>",
@@ -21,7 +21,7 @@
             "pid": 101,
             "name": "Galaxy Note 20",
             "description": [
-                "<strong>6.9″ Full Rectangle Display</strong>\n\nDynamic AMOLED 2X\n",
+                "<strong>6.9″ Full Rectangle Display</strong></br></br>Dynamic AMOLED 2X</br>",
                 "<strong>Octa-Core CPU</strong>",
                 "<strong>Auto Focus</strong>",
                 "<strong>Optical Zoom at 5x , Digital Zoom up to 50x</strong>",
@@ -38,7 +38,7 @@
             "pid": 110,
             "name": "Galaxy Z Flip 5",
             "description": [
-                "<strong>6.7″ Full Rectangle Display 6.6″ Rounded Corners</strong>\n\nDynamic AMOLED 2X\n",
+                "<strong>6.7″ Full Rectangle Display 6.6″ Rounded Corners</strong></br></br>Dynamic AMOLED 2X</br>",
                 "<strong>Octa-Core CPU</strong>",
                 "<strong>Auto Focus</strong>",
                 "<strong>Digital Zoom up to 10x</strong>",
@@ -55,7 +55,7 @@
             "pid": 111,
             "name": "Galaxy Z Flip 6",
             "description": [
-                "<strong>6.7″ Full Rectangle Display 6.6″ Rounded Corners</strong>\n\nDynamic AMOLED 2X\n",
+                "<strong>6.7″ Full Rectangle Display 6.6″ Rounded Corners</strong></br></br>Dynamic AMOLED 2X</br>",
                 "<strong>Octa-Core CPU</strong>",
                 "<strong>Auto Focus</strong>",
                 "<strong>Optical quality Zoom 2x (Enabled by Adaptive Pixel sensor) , Digital Zoom up to 10x</strong>",
@@ -72,12 +72,12 @@
             "pid": 200,
             "name": "iPhone 16 Pro",
             "description": [
-                "<strong>6.3″ Display</strong>\n\nSuper Retina XDR display\nProMotion technology\nAlways-On display",
+                "<strong>6.3″ Display</strong></br></br>Super Retina XDR display</br>ProMotion technology</br>Always-On display",
                 "<strong>A18 Pro chip with 6-core GPU</strong>",
-                "<strong>Camera Control</strong>\n\nEasier way to capture\nFaster access to photo and video tools\n",
-                "<strong>Pro camera system</strong>\n\n48MP Fusion | 48MP Ultra Wide | Telephoto\nSuper-high-resolution photos\n(24MP and 48MP)\nNext-generation portraits with Focus and Depth Control\n48MP macro photography\nDolby Vision up to 4K at 120 fps\nSpatial photos and videos\nLatest-generation Photographic Styles",
+                "<strong>Camera Control</strong></br></br>Easier way to capture</br>Faster access to photo and video tools</br>",
+                "<strong>Pro camera system</strong></br></br>48MP Fusion | 48MP Ultra Wide | Telephoto</br>Super-high-resolution photos</br>(24MP and 48MP)</br>Next-generation portraits with Focus and Depth Control</br>48MP macro photography</br>Dolby Vision up to 4K at 120 fps</br>Spatial photos and videos</br>Latest-generation Photographic Styles",
                 "<strong>Up to 10x optical zoom range</strong>",
-                "<strong>Dynamic Island</strong>\n\nA magical way to interact with iPhone\n",
+                "<strong>Dynamic Island</strong></br></br>A magical way to interact with iPhone</br>",
                 "<strong>Up to 33 hours video playback</strong>",
                 "<strong>USB‑C Supports USB 3</strong>",
                 "<strong>Face ID</strong>"
@@ -93,12 +93,12 @@
             "pid": 201,
             "name": "iPhone 16 Pro Max",
             "description": [
-                "<strong>6.9″ Display</strong>\n\nSuper Retina XDR display\nProMotion technology\nAlways-On display",
+                "<strong>6.9″ Display</strong></br></br>Super Retina XDR display</br>ProMotion technology</br>Always-On display",
                 "<strong>A18 Pro chip with 6-core GPU</strong>",
-                "<strong>Camera Control</strong>\n\nEasier way to capture\nFaster access to photo and video tools\n",
-                "<strong>Pro camera system</strong>\n\n48MP Fusion | 48MP Ultra Wide | Telephoto\nSuper-high-resolution photos\n(24MP and 48MP)\nNext-generation portraits with Focus and Depth Control\n48MP macro photography\nDolby Vision up to 4K at 120 fps\nSpatial photos and videos\nLatest-generation Photographic Styles",
+                "<strong>Camera Control</strong></br></br>Easier way to capture</br>Faster access to photo and video tools</br>",
+                "<strong>Pro camera system</strong></br></br>48MP Fusion | 48MP Ultra Wide | Telephoto</br>Super-high-resolution photos</br>(24MP and 48MP)</br>Next-generation portraits with Focus and Depth Control</br>48MP macro photography</br>Dolby Vision up to 4K at 120 fps</br>Spatial photos and videos</br>Latest-generation Photographic Styles",
                 "<strong>Up to 10x optical zoom range</strong>",
-                "<strong>Dynamic Island</strong>\n\nA magical way to interact with iPhone\n",
+                "<strong>Dynamic Island</strong></br></br>A magical way to interact with iPhone</br>",
                 "<strong>Up to 33 hours video playback</strong>",
                 "<strong>USB‑C Supports USB 3</strong>",
                 "<strong>Face ID</strong>"
@@ -114,9 +114,9 @@
             "pid": 210,
             "name": "iPhone SE",
             "description": [
-                "<strong>4.7″ Display</strong>\n\nRetina HD display\n",
+                "<strong>4.7″ Display</strong></br></br>Retina HD display</br>",
                 "<strong>A15 Bionic chip with 4-core GPU</strong>",
-                "<strong>Single-camera system</strong>\n\n12MP Main\nPortrait mode with Depth Control",
+                "<strong>Single-camera system</strong></br></br>12MP Main</br>Portrait mode with Depth Control",
                 "<strong>1x optical zoom range</strong>",
                 "<strong>Up to 15 hours video playback</strong>",
                 "<strong>Lightning Supports USB 2</strong>",
@@ -133,9 +133,9 @@
             "pid": 211,
             "name": "iPhone SE 2",
             "description": [
-                "<strong>4.7″ Display</strong>\n\nRetina HD display\n",
+                "<strong>4.7″ Display</strong></br></br>Retina HD display</br>",
                 "<strong>A13 Bionic chip with 4-core GPU</strong>",
-                "<strong>Single-camera system</strong>\n\n12MP Main\nPortrait mode advanced bokeh and Depth Control",
+                "<strong>Single-camera system</strong></br></br>12MP Main</br>Portrait mode advanced bokeh and Depth Control",
                 "<strong>Digital zoom up to 5x</strong>",
                 "<strong>Up to 13 hours video playback</strong>",
                 "<strong>Touch ID</strong>"
@@ -151,9 +151,9 @@
             "pid": 220,
             "name": "iPhone MINI 12",
             "description": [
-                "<strong>5.4″ Display</strong>\n\nSuper Retina XDR display\n",
+                "<strong>5.4″ Display</strong></br></br>Super Retina XDR display</br>",
                 "<strong>A14 Bionic chip with 4-core GPU</strong>",
-                "<strong>Wide and Ultra Wide cameras</strong>\n\nDual 12MP\nPortrait mode advanced bokeh and Depth Control",
+                "<strong>Wide and Ultra Wide cameras</strong></br></br>Dual 12MP</br>Portrait mode advanced bokeh and Depth Control",
                 "<strong>Digital zoom up to 5x</strong>",
                 "<strong>Up to 15 hours video playback</strong>",
                 "<strong>Face ID</strong>"
@@ -169,9 +169,9 @@
             "pid": 221,
             "name": "iPhone MINI 13",
             "description": [
-                "<strong>5.4″ Display</strong>\n\nSuper Retina XDR display\n",
+                "<strong>5.4″ Display</strong></br></br>Super Retina XDR display</br>",
                 "<strong>A15 Bionic chip with 4-core GPU</strong>",
-                "<strong>Main and Ultra Wide cameras</strong>\n\nDual 12MP\nPortrait mode with advanced bokeh and Depth Control",
+                "<strong>Main and Ultra Wide cameras</strong></br></br>Dual 12MP</br>Portrait mode with advanced bokeh and Depth Control",
                 "<strong>Digital zoom up to 5x</strong>",
                 "<strong>Up to 17 hours video playback</strong>",
                 "<strong>Face ID</strong>"
@@ -187,11 +187,11 @@
             "pid": 300,
             "name": "Google Pixel 8",
             "description": [
-                "<strong>6.2″-Vollbild-Display(157 mm) display</strong>\n\nActua-Display\n",
-                "<strong>Google Tensor G3</strong>\n\nTitan M2 security chip\n",
+                "<strong>6.2″-Vollbild-Display(157 mm) display</strong></br></br>Actua-Display</br>",
+                "<strong>Google Tensor G3</strong></br></br>Titan M2 security chip</br>",
                 "<strong>Smooth display (60–120 Hz)</strong>",
                 "<strong>Fast wireless charging (Qi certified)</strong>",
-                "<strong>More than 24 hours of battery life</strong>\n\nUp to 72 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>More than 24 hours of battery life</strong></br></br>Up to 72 hours of battery life when using Extreme Power Saving Mode immediately after charging</br>",
                 "<strong>Always-on display with live display and now playing</strong>"
             ],
             "imagepath": "https://priceinto.pk/wp-content/uploads/2024/09/Google-Pixel-8-Price-in-Pakistan-2.webp",
@@ -205,11 +205,11 @@
             "pid": 301,
             "name": "Google Pixel 9",
             "description": [
-                "<strong>1080×2424 with OLED at 422ppi</strong>\n\n160mm Actua full-screen display\n",
-                "<strong>Google Tensor G4</strong>\n\nTitan M2 security chip\n",
+                "<strong>1080×2424 with OLED at 422ppi</strong></br></br>160mm Actua full-screen display</br>",
+                "<strong>Google Tensor G4</strong></br></br>Titan M2 security chip</br>",
                 "<strong>Smooth display (60–120 Hz)</strong>",
                 "<strong>Fast wireless charging (Qi certified)</strong>",
-                "<strong>More than 24 hours of battery life</strong>\n\nUp to 100 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>More than 24 hours of battery life</strong></br></br>Up to 100 hours of battery life when using Extreme Power Saving Mode immediately after charging</br>",
                 "<strong>VPN from Google at no extra charge</strong>"
             ],
             "imagepath": "https://lh3.googleusercontent.com/5AWVOm4Mr9WJjInCyKJByw9bFVC0N8XL1D-M0SQx7BohDYYjpXap_LY8MBN2f3qBPp62HxyEyCZioMEEYeTSjA6Av6RUJZFVlQ",
@@ -223,11 +223,11 @@
             "pid": 310,
             "name": "Google Pixel 9 Pro",
             "description": [
-                "<strong>1280×2856 LTPO OLED at 495ppi</strong>\n\n161mm Super Actua display (LTPO)\n",
-                "<strong>Google Tensor G4</strong>\n\nTitan M2 security chip\n",
+                "<strong>1280×2856 LTPO OLED at 495ppi</strong></br></br>161mm Super Actua display (LTPO)</br>",
+                "<strong>Google Tensor G4</strong></br></br>Titan M2 security chip</br>",
                 "<strong>Smooth display (1–120 Hz)</strong>",
                 "<strong>Fast wireless charging (Qi certified)</strong>",
-                "<strong>More than 24 hours of battery life</strong>\n\nUp to 100 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>More than 24 hours of battery life</strong></br></br>Up to 100 hours of battery life when using Extreme Power Saving Mode immediately after charging</br>",
                 "<strong>VPN from Google at no extra charge</strong>"
             ],
             "imagepath": "https://cdn.movertix.com/media/catalog/product/cache/image/1200x/g/o/google-pixel-9-pro-xl-5g-rose-quartz-256gb.jpg",
@@ -241,11 +241,11 @@
             "pid": 311,
             "name": "Google Pixel 9 Pro Fold",
             "description": [
-                "<strong>2076×2152 with OLED at 373ppi</strong>\n\n204 mm Super Actua-Flex full-screen display (LTPO)\n",
-                "<strong>Google Tensor G4</strong>\n\nTitan M2 security chip\n",
+                "<strong>2076×2152 with OLED at 373ppi</strong></br></br>204 mm Super Actua-Flex full-screen display (LTPO)</br>",
+                "<strong>Google Tensor G4</strong></br></br>Titan M2 security chip</br>",
                 "<strong>Smooth display (60–120 Hz)</strong>",
                 "<strong>Multi-alloy steel with a cover made of a high-strength aluminum alloy in aviation quality</strong>",
-                "<strong>More than 24 hours of battery life</strong>\n\nUp to 72 hours of battery life when using Extreme Power Saving Mode immediately after charging\n",
+                "<strong>More than 24 hours of battery life</strong></br></br>Up to 72 hours of battery life when using Extreme Power Saving Mode immediately after charging</br>",
                 "<strong>VPN from Google at no extra charge</strong>"
             ],
             "imagepath": "https://mobile.1und1.de/_catalog/images/f5e37fc1fd35eb2e7208ee6e0d1b4fc4-img-google-pixel-9-Pro-Fold-obsidian-rechts.png",
