@@ -1,5 +1,4 @@
 <?php
-// Dynamic product data (you can expand this data, or fetch it from a database)
 $products = [
     "Samsung" => [
         "Galaxy Note" => [
