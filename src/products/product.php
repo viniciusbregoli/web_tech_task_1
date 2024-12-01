@@ -115,6 +115,12 @@ if (!$product1 && !$product2) {
                     </form>
                 </div>
             </div>
+            <div>
+                <h2>Features</h2>
+                <?php foreach ($product1['description'] as $desc): ?>
+                    <p><?php echo $desc; ?></p>
+                <?php endforeach; ?>
+            </div>
         <?php endif; ?>
         <?php if ($product2): ?>
             <div id="product-container">
@@ -151,6 +157,12 @@ if (!$product1 && !$product2) {
                         </fieldset>
                     </form>
                 </div>
+            </div>
+            <div>
+                <h2>Features</h2>
+                <?php foreach ($product2['description'] as $desc): ?>
+                    <p><?php echo $desc; ?></p>
+                <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>
