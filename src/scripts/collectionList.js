@@ -1,20 +1,27 @@
-// TASK 3 ========================================================================================
-
 // Function to add product to collection list
 function addToCollection() {
-    const productName = document.querySelector("h1").innerText;
-    const quantity = document.getElementById("quantity").value;
-    const color = document.getElementById("color").value;
     const collectionItems = document.getElementById("collection-items");
 
-    const listItem = document.createElement("li");
-    listItem.innerText = `${productName} - Quantity: ${quantity} - Color: ${color}`;
-    collectionItems.appendChild(listItem);
+    if (document.getElementById("quantity1")) {
+        const productName1 = document.querySelector("h1").innerText.split(" & ")[0];
+        const quantity1 = document.getElementById("quantity1").value;
+        const color1 = document.getElementById("color1").value;
+
+        const listItem1 = document.createElement("li");
+        listItem1.innerText = `${productName1} - Quantity: ${quantity1} - Color: ${color1}`;
+        collectionItems.appendChild(listItem1);
+    }
+
+    if (document.getElementById("quantity2")) {
+        const productName2 = document.querySelector("h1").innerText.split(" & ")[1];
+        const quantity2 = document.getElementById("quantity2").value;
+        const color2 = document.getElementById("color2").value;
+
+        const listItem2 = document.createElement("li");
+        listItem2.innerText = `${productName2} - Quantity: ${quantity2} - Color: ${color2}`;
+        collectionItems.appendChild(listItem2);
+    }
 }
-
-// TASK 4 =======================================================================================
-
-// FIRST PART
 
 // Function to calculate price with taxes
 function getTotalPrice(priceWOTax) {
@@ -24,13 +31,18 @@ function getTotalPrice(priceWOTax) {
 
 // Function to update prices
 function updatePrices() {
-    const priceWOTax = parseFloat(document.getElementById("priceWOTax").value); // Ensure 0 is used if input is empty or invalid
-    const priceWithTax = getTotalPrice(priceWOTax);
+    if (document.getElementById("priceWOTax1")) {
+        const priceWOTax1 = parseFloat(document.getElementById("priceWOTax1").value) || 0;
+        const totalPriceWithTax1 = getTotalPrice(priceWOTax1);
+        document.getElementById("priceWithTax1").innerText = `Price with Tax: €${totalPriceWithTax1.toFixed(2)}`;
+    }
 
-    document.getElementById("priceWithTax").innerText = `Price with Tax: €${priceWithTax.toFixed(2)}`;
+    if (document.getElementById("priceWOTax2")) {
+        const priceWOTax2 = parseFloat(document.getElementById("priceWOTax2").value) || 0;
+        const totalPriceWithTax2 = getTotalPrice(priceWOTax2);
+        document.getElementById("priceWithTax2").innerText = `Price with Tax: €${totalPriceWithTax2.toFixed(2)}`;
+    }
 }
-
-// SECOND PART: ADDITIONAL FUNCTIONALITY
 
 function applyDiscount(discountRate) {
     if (discountRate < 0 || discountRate > 1) {
@@ -38,35 +50,39 @@ function applyDiscount(discountRate) {
         return;
     }
 
-    const priceWOTaxElement = document.getElementById("priceWOTax");
-    const priceWOTax = parseFloat(priceWOTaxElement.value) || 0; // Ensure 0 is used if input is empty or invalid
+    if (document.getElementById("priceWOTax1")) {
+        const priceWOTaxElement1 = document.getElementById("priceWOTax1");
+        const priceWOTax1 = parseFloat(priceWOTaxElement1.value) || 0;
+        const discountedPrice1 = priceWOTax1 * (1 - discountRate);
+        const totalPriceWithTax1 = getTotalPrice(discountedPrice1);
+        document.getElementById("priceWithTax1").innerText = `Price with Tax (Discounted): €${totalPriceWithTax1.toFixed(2)}`;
+    }
 
-    const discountedPrice = priceWOTax * (1 - discountRate);
-    const totalPriceWithTax = getTotalPrice(discountedPrice);
-
-    document.getElementById("priceWithTax").innerText = `Price with Tax (Discounted): €${totalPriceWithTax.toFixed(2)}`;
-    console.log(
-        `Applied discount: ${discountRate * 100}%. Original price: €${priceWOTax.toFixed(2)}, Discounted price: €${discountedPrice.toFixed(
-            2
-        )}, Total price with tax: €${totalPriceWithTax.toFixed(2)}`
-    );
+    if (document.getElementById("priceWOTax2")) {
+        const priceWOTaxElement2 = document.getElementById("priceWOTax2");
+        const priceWOTax2 = parseFloat(priceWOTaxElement2.value) || 0;
+        const discountedPrice2 = priceWOTax2 * (1 - discountRate);
+        const totalPriceWithTax2 = getTotalPrice(discountedPrice2);
+        document.getElementById("priceWithTax2").innerText = `Price with Tax (Discounted): €${totalPriceWithTax2.toFixed(2)}`;
+    }
 }
 
 function resetPrices() {
     const confirmation = confirm("Are you sure you want to reset the prices?");
     if (confirmation) {
-        document.getElementById("priceWOTax").value = 1199;
+        if (document.getElementById("priceWOTax1")) {
+            const originalPrice1 = document.getElementById("priceWOTax1").getAttribute("data-original-price");
+            document.getElementById("priceWOTax1").value = originalPrice1;
+        }
+        if (document.getElementById("priceWOTax2")) {
+            const originalPrice2 = document.getElementById("priceWOTax2").getAttribute("data-original-price");
+            document.getElementById("priceWOTax2").value = originalPrice2;
+        }
         updatePrices();
-        console.log("Prices have been reset to the default value.");
+        console.log("Prices have been reset to the original values.");
     } else {
         console.log("Price reset action was canceled.");
     }
-}
-
-function updatePrices() {
-    const priceWOTax = parseFloat(document.getElementById("priceWOTax").value) || 0;
-    const totalPriceWithTax = getTotalPrice(priceWOTax);
-    document.getElementById("priceWithTax").innerText = `Price with Tax: €${totalPriceWithTax.toFixed(2)}`;
 }
 
 function clearCollection() {
@@ -81,8 +97,18 @@ function clearCollection() {
 }
 
 // Add event listeners for discount and reset buttons
-document.getElementById("apply-discount").addEventListener("click", () => applyDiscount(0.1));
-document.getElementById("reset-prices").addEventListener("click", resetPrices);
+if (document.getElementById("apply-discount1")) {
+    document.getElementById("apply-discount1").addEventListener("click", () => applyDiscount(0.1));
+}
+if (document.getElementById("apply-discount2")) {
+    document.getElementById("apply-discount2").addEventListener("click", () => applyDiscount(0.1));
+}
+if (document.getElementById("reset-prices1")) {
+    document.getElementById("reset-prices1").addEventListener("click", resetPrices);
+}
+if (document.getElementById("reset-prices2")) {
+    document.getElementById("reset-prices2").addEventListener("click", resetPrices);
+}
 
 // Initialize prices on page load
 updatePrices();
