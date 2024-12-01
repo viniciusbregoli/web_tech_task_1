@@ -2,23 +2,25 @@
 function addToCollection(productId) {
     const collectionItems = document.getElementById("collection-items");
 
-    if (productId === 'product1' && document.getElementById("quantity1")) {
+    if (productId === "product1" && document.getElementById("quantity1")) {
         const productName1 = document.querySelector("h1").innerText.split(" & ")[0];
         const quantity1 = document.getElementById("quantity1").value;
         const color1 = document.getElementById("color1").value;
+        const storage1 = document.querySelector('input[name="storage1"]:checked').value;
 
         const listItem1 = document.createElement("li");
-        listItem1.innerText = `${productName1} - Quantity: ${quantity1} - Color: ${color1}`;
+        listItem1.innerText = `${productName1} - Quantity: ${quantity1} - Color: ${color1} - Storage: ${storage1}GB`;
         collectionItems.appendChild(listItem1);
     }
 
-    if (productId === 'product2' && document.getElementById("quantity2")) {
+    if (productId === "product2" && document.getElementById("quantity2")) {
         const productName2 = document.querySelector("h1").innerText.split(" & ")[1];
         const quantity2 = document.getElementById("quantity2").value;
         const color2 = document.getElementById("color2").value;
+        const storage2 = document.querySelector('input[name="storage2"]:checked').value;
 
         const listItem2 = document.createElement("li");
-        listItem2.innerText = `${productName2} - Quantity: ${quantity2} - Color: ${color2}`;
+        listItem2.innerText = `${productName2} - Quantity: ${quantity2} - Color: ${color2} - Storage: ${storage2}GB`;
         collectionItems.appendChild(listItem2);
     }
 }
