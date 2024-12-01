@@ -1,8 +1,8 @@
 // Function to add product to collection list
-function addToCollection() {
+function addToCollection(productId) {
     const collectionItems = document.getElementById("collection-items");
 
-    if (document.getElementById("quantity1")) {
+    if (productId === 'product1' && document.getElementById("quantity1")) {
         const productName1 = document.querySelector("h1").innerText.split(" & ")[0];
         const quantity1 = document.getElementById("quantity1").value;
         const color1 = document.getElementById("color1").value;
@@ -12,7 +12,7 @@ function addToCollection() {
         collectionItems.appendChild(listItem1);
     }
 
-    if (document.getElementById("quantity2")) {
+    if (productId === 'product2' && document.getElementById("quantity2")) {
         const productName2 = document.querySelector("h1").innerText.split(" & ")[1];
         const quantity2 = document.getElementById("quantity2").value;
         const color2 = document.getElementById("color2").value;

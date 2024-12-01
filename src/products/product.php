@@ -110,7 +110,7 @@ if (!$product1 && !$product2) {
                             <input id="cart1" type="submit" value="Add to Cart">
                             <label for="quantity1">Quantity:</label>
                             <input type="number" id="quantity1" name="quantity1" min="1" max="5" value="1">
-                            <button type="button" id="add-to-collection1" onclick="addToCollection()">Add to Collection List</button>
+                            <button type="button" id="add-to-collection1" onclick="addToCollection('product1')">Add to Collection List</button>
                         </fieldset>
                     </form>
                 </div>
@@ -147,12 +147,17 @@ if (!$product1 && !$product2) {
                             <input id="cart2" type="submit" value="Add to Cart">
                             <label for="quantity2">Quantity:</label>
                             <input type="number" id="quantity2" name="quantity2" min="1" max="5" value="1">
-                            <button type="button" id="add-to-collection2" onclick="addToCollection()">Add to Collection List</button>
+                            <button type="button" id="add-to-collection2" onclick="addToCollection('product2')">Add to Collection List</button>
                         </fieldset>
                     </form>
                 </div>
             </div>
         <?php endif; ?>
+    </div>
+    <div id="collection-list">
+        <h2>Collection List</h2>
+        <ul id="collection-items"></ul>
+        <button type="button" onclick="clearCollection()">Clear Collection List</button>
     </div>
     <footer>
         <a id="home" href="../index.php">Home</a>
