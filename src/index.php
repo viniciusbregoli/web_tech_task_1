@@ -40,6 +40,8 @@
         <h1>Welcome to Our Tech Shop</h1>
         <div id="header-right">
             <a id="login" href="login.php">Login</a>
+            <a id="shoppingcart" href="../shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
+            <span>0</span>
             <a id="profile" href="customer.php"><img src="../assets/user.png" alt="profile"></a>
         </div>
     </header>
