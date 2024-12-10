@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $json = file_get_contents('../json/product.json');
 $products = json_decode($json, true);
 $product1 = null;
@@ -75,7 +77,7 @@ if (!$product1 && !$product2) {
         </h1>
         <div id="header-right">
             <a id="login" href="../login.php">Login</a>
-            <a id="shoppingcart" href="../shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
+            <a id="shoppingcart" href="./shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
             <span>0</span>
             <a id="profile" href="../customer.php"><img src="../../assets/user.png" alt="profile"></a>
         </div>
@@ -90,7 +92,7 @@ if (!$product1 && !$product2) {
                     <p id="priceWithTax1"></p>
                     <button type="button" id="apply-discount1">Apply 10% Discount</button>
                     <button type="button" id="reset-prices1">Reset Prices</button>
-                    <form>
+                    <form action="addToCart.php" method="POST">
                         <fieldset>
                             <legend>OPTIONS</legend>
                             <label for="color1">Color</label>
@@ -110,8 +112,12 @@ if (!$product1 && !$product2) {
                             </br>
                             </br>
                             <input id="cart1" type="submit" value="Add to Cart">
+                            <input type="hidden" name="pid" value="<?php echo $product1['pid']; ?>">
+                            <input type="hidden" name="name" value="<?php echo htmlspecialchars($product1['name']); ?>">
+                            <input type="hidden" name="price" value="<?php echo $product1['price']; ?>">
                             <label for="quantity1">Quantity:</label>
-                            <input type="number" id="quantity1" name="quantity1" min="1" max="5" value="1">
+                            <input type="number" id="quantity1" name="quantity" min="1" max="5" value="1">
+
                             <button type="button" id="add-to-collection1" onclick="addToCollection('product1')">Add to Collection List</button>
                         </fieldset>
                     </form>
@@ -144,7 +150,7 @@ if (!$product1 && !$product2) {
                     <p id="priceWithTax2"></p>
                     <button type="button" id="apply-discount2">Apply 10% Discount</button>
                     <button type="button" id="reset-prices2">Reset Prices</button>
-                    <form>
+                    <form action="addToCart.php" method="POST">
                         <fieldset>
                             <legend>OPTIONS</legend>
                             <label for="color2">Color</label>
@@ -163,6 +169,9 @@ if (!$product1 && !$product2) {
                             <?php endforeach; ?>
                             </br>
                             </br>
+                            <input type="hidden" name="pid" value="<?php echo $product2['pid']; ?>">
+                            <input type="hidden" name="name" value="<?php echo htmlspecialchars($product2['name']); ?>">
+                            <input type="hidden" name="price" value="<?php echo $product2['price']; ?>">
                             <input id="cart2" type="submit" value="Add to Cart">
                             <label for="quantity2">Quantity:</label>
                             <input type="number" id="quantity2" name="quantity2" min="1" max="5" value="1">
