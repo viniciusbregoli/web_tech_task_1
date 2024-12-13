@@ -40,6 +40,14 @@ if (isset($_GET["pid2"])) {
 if (!$product1 && !$product2) {
     header("location: ../error.php");
 }
+
+$cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+
+// Calculate total quantity of items in the cart
+$cart_quantity = 0;
+foreach ($cart as $item) {
+    $cart_quantity += $item['quantity'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +86,7 @@ if (!$product1 && !$product2) {
         <div id="header-right">
             <a id="login" href="../login.php">Login</a>
             <a id="shoppingcart" href="./shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
-            <span>0</span>
+            <span><?php echo $cart_quantity; ?></span>
             <a id="profile" href="../customer.php"><img src="../../assets/user.png" alt="profile"></a>
         </div>
     </header>
@@ -115,6 +123,7 @@ if (!$product1 && !$product2) {
                             <input type="hidden" name="pid" value="<?php echo $product1['pid']; ?>">
                             <input type="hidden" name="name" value="<?php echo htmlspecialchars($product1['name']); ?>">
                             <input type="hidden" name="price" value="<?php echo $product1['price']; ?>">
+                            <input type="hidden" id="priceWithTaxInput1" name="priceWithTax" value=""> <!-- Price with tax -->
                             <label for="quantity1">Quantity:</label>
                             <input type="number" id="quantity1" name="quantity" min="1" max="5" value="1">
 
@@ -127,7 +136,7 @@ if (!$product1 && !$product2) {
             <table>
                 <caption>Features</caption>
                 <!-- Display in a table with two columns -->
-                <?php $i = 0; ?>
+                <?php $i = 0; ?> 
                 <?php foreach ($product1['description'] as $feature): ?>
                     <?php if ($i % 2 == 0): ?>
                         <tr>

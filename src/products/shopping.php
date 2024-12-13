@@ -25,22 +25,25 @@ $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                $total = 0; // Initialize total sum
-                foreach ($cart as $item): 
-                    $price = isset($item['price']) ? (float)$item['price'] : 0;
-                    $quantity = isset($item['quantity']) ? (int)$item['quantity'] : 1;
-                    $subtotal = $price * $quantity; // Calculate subtotal
-                    $total += $subtotal; // Add to total sum
-                ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($item['name']); ?></td>
-                        <td><?php echo number_format($price, 2); ?></td>
-                        <td><?php echo $quantity; ?></td>
-                        <td><?php echo number_format($subtotal, 2); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
+            <?php 
+            $total = 0; // Initialize total sum
+            foreach ($cart as $item): 
+                $price = isset($item['price']) ? (float)$item['price'] : 0; // Original price
+                $priceWithTax = isset($item['price_with_tax']) ? (float)$item['price_with_tax'] : $price; // Price with tax if available
+                $quantity = isset($item['quantity']) ? (int)$item['quantity'] : 1;
+
+                $subtotal = $priceWithTax * $quantity; // Use price with tax for subtotal
+                $total += $subtotal; // Add to total sum
+            ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($item['name']); ?></td>
+                    <td><?php echo number_format($price, 2); ?></td> <!-- Display original price -->
+                    <td><?php echo $quantity; ?></td>
+                    <td><?php echo number_format($subtotal, 2); ?></td> <!-- Subtotal with price with tax -->
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+
         </table>
         <!-- Display Total Sum -->
         <p><strong>Total: €<?php echo number_format($total, 2); ?></strong></p>

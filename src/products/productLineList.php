@@ -1,4 +1,5 @@
 <?php
+session_start();
 $products = [
     "Samsung" => [
         "Galaxy Note" => [
@@ -43,6 +44,15 @@ $model = isset($_GET['model']) ? $_GET['model'] : 'Unknown';
 // Fetch the models for the selected brand
 $brandModels = isset($products[$brand]) ? $products[$brand] : [];
 $modelList = isset($brandModels[$model]) ? $brandModels[$model] : [];
+
+$cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+
+// Calculate total quantity of items in the cart
+$cart_quantity = 0;
+foreach ($cart as $item) {
+    $cart_quantity += $item['quantity'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +69,7 @@ $modelList = isset($brandModels[$model]) ? $brandModels[$model] : [];
         <div id="header-right">
             <a id="login" href="../login.php">Login</a>
             <a id="shoppingcart" href="./shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
-            <span>0</span>
+            <span><?php echo $cart_quantity; ?></span>
             <a id="profile" href="../customer.php"><img src="../../assets/user.png" alt="profile"></a>
         </div>
     </header>
