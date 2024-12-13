@@ -1,6 +1,37 @@
 <?php
 session_start();
 $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Handle item removal
+    if (isset($_POST['remove'])) {
+        $pidToRemove = $_POST['pid'];
+        foreach ($cart as $key => $item) {
+            if ($item['pid'] === $pidToRemove) {
+                unset($cart[$key]);
+                break;
+            }
+        }
+        $_SESSION['cart'] = array_values($cart); // Re-index array after removal
+    }
+
+    // Handle quantity update
+    if (isset($_POST['update'])) {
+        $pidToUpdate = $_POST['pid'];
+        $newQuantity = (int)$_POST['quantity'];
+
+        foreach ($cart as &$item) {
+            if ($item['pid'] === $pidToUpdate) {
+                if ($newQuantity < 1) {
+                    $newQuantity = 1; // Ensure quantity is at least 1
+                }
+                $item['quantity'] = $newQuantity;
+                break;
+            }
+        }
+        $_SESSION['cart'] = $cart; // Update the session cart
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +53,7 @@ $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
                     <th>Price (€)</th>
                     <th>Quantity</th>
                     <th>Subtotal (€)</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,12 +70,25 @@ $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
                 <tr>
                     <td><?php echo htmlspecialchars($item['name']); ?></td>
                     <td><?php echo number_format($price, 2); ?></td> <!-- Display original price -->
-                    <td><?php echo $quantity; ?></td>
+                    <td>
+                        <!-- Update Quantity Form -->
+                        <form action="shopping.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="pid" value="<?php echo $item['pid']; ?>">
+                            <input type="number" name="quantity" value="<?php echo $quantity; ?>" min="1">
+                            <input type="submit" name="update" value="Update Quantity">
+                        </form>
+                    </td>
                     <td><?php echo number_format($subtotal, 2); ?></td> <!-- Subtotal with price with tax -->
+                    <td>
+                        <!-- Remove Item Form -->
+                        <form action="shopping.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="pid" value="<?php echo $item['pid']; ?>">
+                            <input type="submit" name="remove" value="Remove Item">
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
-
         </table>
         <!-- Display Total Sum -->
         <p><strong>Total: €<?php echo number_format($total, 2); ?></strong></p>
@@ -60,7 +105,6 @@ $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
         <a href="../index.php">Continue Shopping</a>
     </footer>
 
-    <!-- Scripts -->
     <img id="dark-mode" src="../../assets/moon.png" alt="Dark Mode" data-img-path="../../assets/"/>
     <script src="../scripts/darkMode.js"></script>
     <script src="../scripts/screenWidth.js"></script>
