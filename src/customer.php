@@ -14,19 +14,39 @@ $userStmt->bind_param("s", $username);
 $userStmt->execute();
 $userResult = $userStmt->get_result()->fetch_assoc();
 $isBlocked = $userResult['blocked'] == 1;
+$userStmt->close();
 
 if (isset($_POST['cancel_order'])) {
     $orderIdToCancel = (int)$_POST['order_id'];
-    // Cancel order only if status is 'new'
-    $updateStmt = $conn->prepare("UPDATE orders SET status = 'canceled' WHERE order_id = ? AND username = ? AND status = 'new'");
-    $updateStmt->bind_param("is", $orderIdToCancel, $username);
-    $updateStmt->execute();
-    $updateStmt->close();
+    
+    // First check if the order is in 'new' state to ensure it affects the user_order_count
+    $checkOrderStatus = $conn->prepare("SELECT status FROM orders WHERE order_id = ? AND username = ?");
+    $checkOrderStatus->bind_param("is", $orderIdToCancel, $username);
+    $checkOrderStatus->execute();
+    $statusResult = $checkOrderStatus->get_result()->fetch_assoc();
+    $checkOrderStatus->close();
+
+    if ($statusResult && $statusResult['status'] == 'new') {
+        // Cancel the order
+        $updateStmt = $conn->prepare("UPDATE orders SET status = 'canceled' WHERE order_id = ? AND username = ? AND status = 'new'");
+        $updateStmt->bind_param("is", $orderIdToCancel, $username);
+        $updateStmt->execute();
+        $affectedRows = $updateStmt->affected_rows; // Check if actually updated
+        $updateStmt->close();
+
+        if ($affectedRows > 0) {
+            // If the order was indeed canceled, decrement user_order_count by 1
+            $decrementCount = $conn->prepare("UPDATE users SET user_order_count = user_order_count - 1 WHERE username = ? AND user_order_count > 0");
+            $decrementCount->bind_param("s", $username);
+            $decrementCount->execute();
+            $decrementCount->close();
+        }
+    }
 }
 
-// Fetch orders including price_with_tax
+// Fetch orders including total_price
 $query = $conn->prepare("
-    SELECT o.order_id, o.order_date, o.status, o.rejection_reason,
+    SELECT o.order_id, o.order_date, o.status, o.rejection_reason, o.total_price,
            p.name AS product_name, oi.quantity, oi.price, oi.price_with_tax
     FROM orders o
     JOIN order_items oi ON o.order_id = oi.order_id
@@ -47,6 +67,7 @@ while ($row = $result->fetch_assoc()) {
             'order_date' => $row['order_date'],
             'status' => $row['status'],
             'rejection_reason' => $row['rejection_reason'],
+            'total_price' => (float)$row['total_price'], 
             'items' => []
         ];
     }
@@ -78,8 +99,14 @@ while ($row = $result->fetch_assoc()) {
     <h2>Your Orders</h2>
     <?php if (!empty($orders)): ?>
         <?php foreach ($orders as $order): ?>
-            <?php 
-            $orderTotal = 0;
+            <?php
+            // Calculate what the total would have been without discount:
+            $fullTotal = 0;
+            foreach ($order['items'] as $item) {
+                $fullTotal += $item['price_with_tax'] * $item['quantity'];
+            }
+
+            $discountApplied = $order['total_price'] < $fullTotal;
             ?>
             <div class="order" style="margin-bottom: 20px;">
                 <h3>
@@ -106,7 +133,6 @@ while ($row = $result->fetch_assoc()) {
                             $priceWithTax = $item['price_with_tax'];
                             $quantity = $item['quantity'];
                             $subtotal = $priceWithTax * $quantity; 
-                            $orderTotal += $subtotal;
                         ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($item['product_name']); ?></td>
@@ -118,7 +144,11 @@ while ($row = $result->fetch_assoc()) {
                     </tbody>
                 </table>
 
-                <p><strong>Total: €<?php echo number_format($orderTotal, 2); ?></strong></p>
+                <p><strong>Total: €<?php echo number_format($order['total_price'], 2); ?></strong>
+                <?php if ($discountApplied): ?>
+                    <span style="color:green; font-weight:bold;">(Discount Applied!)</span>
+                <?php endif; ?>
+                </p>
 
                 <?php if ($order['status'] == 'new'): ?>
                     <form method="POST">
@@ -134,7 +164,7 @@ while ($row = $result->fetch_assoc()) {
 
     <footer>
         <a href="index.php">Home</a>
-    </footer>    
+    </footer>
     <img id="dark-mode" src="../assets/moon.png" alt="Dark Mode" data-img-path="../assets/"/>
     <script src="./scripts/check.js"></script>
     <script src="./scripts/darkMode.js"></script>

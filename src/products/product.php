@@ -106,8 +106,6 @@ foreach ($cart as $item) {
                     <label for="priceWOTax1">Price without taxes (€):</label>
                     <input type="number" id="priceWOTax1" step="100" value="<?php echo $product1['price']; ?>" data-original-price="<?php echo $product1['price']; ?>" oninput="updatePrices()">
                     <p id="priceWithTax1"></p>
-                    <button type="button" id="apply-discount1">Apply 10% Discount</button>
-                    <button type="button" id="reset-prices1">Reset Prices</button>
                     <form action="addToCart.php" method="POST">
                         <fieldset>
                             <legend>OPTIONS</legend>

@@ -1,20 +1,22 @@
 <?php
 session_start();
-require '../db_connect.php'; // Make sure this path is correct, if needed
+require '../db_connect.php'; // Make sure this path is correct
 
 $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
 
-// Check if user is blocked
+// Check if user is blocked and get user_order_count
 $isBlocked = false;
+$user_order_count = 0;
 if ($username) {
-    $stmt = $conn->prepare("SELECT blocked FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT blocked, user_order_count FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $userRow = $stmt->get_result()->fetch_assoc();
     $stmt->close();
     if ($userRow) {
         $isBlocked = $userRow['blocked'] == 1;
+        $user_order_count = (int)$userRow['user_order_count'];
     }
 }
 
@@ -28,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 break;
             }
         }
-        $_SESSION['cart'] = array_values($cart); // Re-index array after removal
+        $_SESSION['cart'] = array_values($cart); 
     }
 
     // Handle quantity update
@@ -39,17 +41,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         foreach ($cart as &$item) {
             if ($item['pid'] === $pidToUpdate) {
                 if ($newQuantity < 1) {
-                    $newQuantity = 1; // Ensure quantity is at least 1
+                    $newQuantity = 1; 
                 }
                 $item['quantity'] = $newQuantity;
                 break;
             }
         }
-        $_SESSION['cart'] = $cart; // Update the session cart
+        $_SESSION['cart'] = $cart; 
     }
 }
-?>
 
+// Determine if next order qualifies for a discount
+$nextOrderCount = $user_order_count + 1;
+$discountMessage = "";
+$discount = 0;
+if ($nextOrderCount % 20 == 0) {
+    $discountMessage = "Great news! Your next order (this one) will receive a 20% discount at checkout.";
+    $discount = 0.20;
+} elseif ($nextOrderCount % 10 == 0) {
+    $discountMessage = "Great news! Your next order (this one) will receive a 10% discount at checkout.";
+    $discount = 0.10;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1>Your Shopping Cart</h1>
 
     <?php if (!empty($cart)): ?>
+        <?php if ($discountMessage): ?>
+            <p style="color: green; font-weight:bold;"><?php echo $discountMessage; ?></p>
+        <?php endif; ?>
+        
         <table border="1">
             <thead>
                 <tr>
@@ -74,14 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </thead>
             <tbody>
             <?php 
-            $total = 0; // Initialize total sum
+            $total = 0; 
             foreach ($cart as $item): 
-                $price = isset($item['price']) ? (float)$item['price'] : 0; // Original price
-                $priceWithTax = isset($item['price_with_tax']) ? (float)$item['price_with_tax'] : $price; // Price with tax if available
+                $price = isset($item['price']) ? (float)$item['price'] : 0; 
+                $priceWithTax = isset($item['price_with_tax']) ? (float)$item['price_with_tax'] : $price; 
                 $quantity = isset($item['quantity']) ? (int)$item['quantity'] : 1;
 
-                $subtotal = $priceWithTax * $quantity; // Use price with tax for subtotal
-                $total += $subtotal; // Add to total sum
+                $subtotal = $priceWithTax * $quantity; 
+                $total += $subtotal; 
             ?>
                 <tr>
                     <td><?php echo htmlspecialchars($item['name']); ?></td>
@@ -104,7 +121,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php endforeach; ?>
         </tbody>
         </table>
-        <p><strong>Total: €<?php echo number_format($total, 2); ?></strong></p>
+
+        <?php if ($discount > 0): ?>
+            <?php $discountedTotal = $total - ($total * $discount); ?>
+            <p><strong>Total (without discount): €<?php echo number_format($total, 2); ?></strong></p>
+            <p style="color:green;"><strong>Discounted Total: €<?php echo number_format($discountedTotal, 2); ?></strong></p>
+        <?php else: ?>
+            <p><strong>Total: €<?php echo number_format($total, 2); ?></strong></p>
+        <?php endif; ?>
 
         <?php if ($isBlocked): ?>
             <p style="color:red;">Your account is blocked by the administrator. You cannot place new orders.</p>
@@ -115,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php endif; ?>
 
         <form action="clearCart.php" method="POST">
-            <button type="submit">Clear Cart</button> 
+            <input type="submit" value="Clear Cart">
         </form>
     <?php else: ?>
         <p>Your cart is empty!</p>
