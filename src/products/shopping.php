@@ -1,6 +1,22 @@
 <?php
 session_start();
+require '../db_connect.php'; // Make sure this path is correct, if needed
+
 $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
+
+// Check if user is blocked
+$isBlocked = false;
+if ($username) {
+    $stmt = $conn->prepare("SELECT blocked FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $userRow = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+    if ($userRow) {
+        $isBlocked = $userRow['blocked'] == 1;
+    }
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle item removal
@@ -32,8 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['cart'] = $cart; // Update the session cart
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/productListStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/shopping.css">
     <title>Shopping Cart</title>
 </head>
 <body>
@@ -71,18 +85,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?>
                 <tr>
                     <td><?php echo htmlspecialchars($item['name']); ?></td>
-                    <td><?php echo number_format($price, 2); ?></td> <!-- Display original price -->
+                    <td><?php echo number_format($price, 2); ?></td> 
                     <td>
-                        <!-- Update Quantity Form -->
                         <form action="shopping.php" method="POST" style="display:inline;">
                             <input type="hidden" name="pid" value="<?php echo $item['pid']; ?>">
                             <input type="number" name="quantity" value="<?php echo $quantity; ?>" min="1">
                             <input type="submit" name="update" value="Update Quantity">
                         </form>
                     </td>
-                    <td><?php echo number_format($subtotal, 2); ?></td> <!-- Subtotal with price with tax -->
+                    <td><?php echo number_format($subtotal, 2); ?></td> 
                     <td>
-                        <!-- Remove Item Form -->
                         <form action="shopping.php" method="POST" style="display:inline;">
                             <input type="hidden" name="pid" value="<?php echo $item['pid']; ?>">
                             <input type="submit" name="remove" value="Remove Item">
@@ -92,16 +104,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php endforeach; ?>
         </tbody>
         </table>
-        <!-- Display Total Sum -->
         <p><strong>Total: €<?php echo number_format($total, 2); ?></strong></p>
 
-        <form method="POST" action="checkout.php">
-            <button type="submit">Checkout</button>
-        </form>
+        <?php if ($isBlocked): ?>
+            <p style="color:red;">Your account is blocked by the administrator. You cannot place new orders.</p>
+        <?php else: ?>
+            <form method="POST" action="checkout.php">
+                <button type="submit">Checkout</button>
+            </form>
+        <?php endif; ?>
 
-        <!-- Clear Cart Form -->
         <form action="clearCart.php" method="POST">
-            <input type="submit" value="Clear Cart">
+            <button type="submit">Clear Cart</button> 
         </form>
     <?php else: ?>
         <p>Your cart is empty!</p>

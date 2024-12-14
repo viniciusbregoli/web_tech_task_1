@@ -229,5 +229,4 @@ foreach ($cart as $item) {
     <script src="../scripts/darkMode.js"></script>
     <script src="../scripts/screenWidth.js"></script>
 </body>
-
 </html>

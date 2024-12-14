@@ -23,7 +23,7 @@
             echo "<script>
                     alert(\"Login successful! Welcome back.\");
                 </script>";
-            //header("Location: index.php");
+            header("Location: index.php");
         } else {
             // Incorrect password
             echo "<script>

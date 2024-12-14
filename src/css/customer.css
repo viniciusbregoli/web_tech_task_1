@@ -1,0 +1,100 @@
+@import url(mystyle.css);
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#logout {
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#logout:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.blocked-msg {
+    color: red;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.order {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.order h3 {
+    margin: 0 0 10px 0;
+}
+
+.order table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.order table th, .order table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.order-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rejection-reason {
+    color: #a00;
+    font-weight: bold;
+}
+
+.cancel-form button {
+    background-color: #d9534f;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cancel-form button:hover {
+    background-color: #c9302c;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+#home {
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#home:hover {
+    background-color: #333;
+    color: #fff;
+}
