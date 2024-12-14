@@ -8,34 +8,43 @@
 </head>
 <body>
     <?php 
-    // associative array
-    $navItems = [
-        "Samsung" => [
-            "logo" => "https://cdn.icon-icons.com/icons2/3914/PNG/512/samsung_logo_icon_248596.png",
-            "generalLink" => "/myWebShop/src/products/productList.php?brand=Samsung",  
-            "models" => [
-                "Galaxy Note" => "/myWebShop/src/products/productLineList.php?brand=Samsung&model=Galaxy+Note",
-                "Galaxy Z Flip" => "/myWebShop/src/products/productLineList.php?brand=Samsung&model=Galaxy+Z+Flip"
-            ]
-        ],
-        "Apple" => [
-            "logo" => "https://cdn-icons-png.flaticon.com/512/0/747.png",
-            "generalLink" => "/myWebShop/src/products/productList.php?brand=Apple",  
-            "models" => [
-                "iPhone MINI" => "/myWebShop/src/products/productLineList.php?brand=Apple&model=iPhone+MINI",
-                "iPhone PRO" => "/myWebShop/src/products/productLineList.php?brand=Apple&model=iPhone+PRO",
-                "iPhone SE" => "/myWebShop/src/products/productLineList.php?brand=Apple&model=iPhone+SE"
-            ]
-        ],
-        "Google" => [
-            "logo" => "https://brandlogo.org/wp-content/uploads/2024/05/Google-Pixel-Logo.png",
-            "generalLink" => "/myWebShop/src/products/productList.php?brand=Google",  
-            "models" => [
-                "Pixel" => "/myWebShop/src/products/productLineList.php?brand=Google&model=Pixel",
-                "Pixel PRO" => "/myWebShop/src/products/productLineList.php?brand=Google&model=Pixel+PRO"
-            ]
-        ]
-    ];
+        $generalProductLink = "/myWebShop/src/products/productList.php?brandId=";
+
+        include('db_connect.php');
+
+        $brandsSql = "SELECT id, name, logo FROM brands";
+        $brandsResult = mysqli_query($conn, $brandsSql);
+
+        // Save result with associative array
+        $brands = [];
+
+        if ($brandsResult->num_rows > 0) {
+            // Take each row as an associative array and add it to the $brands list
+            while($row = $brandsResult->fetch_assoc()) {
+                $brands[] = $row;
+            }
+        } else {
+            echo "Data Not Found.";
+        }
+
+        $categoriesSql = "SELECT id, brand_id, name FROM categories ORDER BY brand_id";
+        $categoriesResult = mysqli_query($conn, $categoriesSql);
+
+        $brandCategories = [];
+
+        while ($row = $categoriesResult->fetch_assoc()) {
+            $categoryId = $row['id'];
+            $brandId = $row['brand_id'];
+            $categoryName = $row['name'];
+
+            // Check if brand_id already exists in the array
+            if (!isset($brandCategories[$brandId])) {
+                $brandCategories[$brandId] = [];
+            }
+
+            $brandCategories[$brandId][$categoryId] = $categoryName;
+        }
+
     ?>
     <header class="container">
         <h1>Welcome to Our Tech Shop</h1>
@@ -55,19 +64,19 @@
     </header>
     <nav>
         <ul id="brand-container">
-            <?php foreach ($navItems as $brand => $details): ?>
+            <?php foreach ($brands as $brand): ?>
                 <li class="list-brand">
-                    <a href="<?php echo $details['generalLink']; ?>">
-                        <img src="<?php echo $details['logo']; ?>" alt="<?php echo $brand . ' logo'; ?>">
+                    <a href="<?php echo $generalProductLink . $brand['id']; ?>">
+                        <img src="<?php echo $brand['logo']; ?>" alt="<?php echo $brand['name'] . ' logo'; ?>">
                     </a>
 
                     <ul>
-                        <?php foreach ($details['models'] as $category): ?>
+                        <?php foreach ($brandCategories[$brand['id']] as $categoryId => $categoryName): ?>
                             <?php 
-                                $categoryLink = sprintf("/myWebShop/src/products/productLineList.php?brand=%s&model=%s", $brand, $category);
+                                $categoryLink = sprintf("/myWebShop/src/products/productLineList.php?brandId=%s&categoryId=%s", $brand['id'], $categoryId);
                             ?>
                             <li class="list-brand-model">
-                               <a href="<?php echo $categoryLink; ?>"><?php echo $category; ?></a>
+                               <a href="<?php echo $categoryLink; ?>"><?php echo $categoryName; ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>

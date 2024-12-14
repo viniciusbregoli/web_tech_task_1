@@ -1,37 +1,45 @@
 <?php
-
-$json = file_get_contents('../json/product.json');
-$products = json_decode($json, true);
 $product1 = null;
 $product2 = null;
+
+include('../db_connect.php');
 
 if (isset($_GET["pid"])) {
     $pid = $_GET["pid"];
     if (empty($pid)) {
         header("location: ../error.php");
     } else {
-        if (isset($products['product'])) {
-            foreach ($products['product'] as $p) {
-                if ($p['pid'] == $pid) {
-                    $product1 = $p;
-                }
-            }
-        }
+        $sql = "SELECT * FROM products WHERE id = $pid;";
+        $result1 = mysqli_query($conn, $sql);
+
+        $product1 = mysqli_fetch_assoc($result1);
+        
+        $product_data1 = json_decode($product1['data'], true);
+        $description1 = $product_data1['description'];
+        $imagepath1 = $product_data1['imagepath'];
+        $colors1 = $product_data1['colors'];  
+        $storage1 = $product_data1['storage'];
     }
+} else {
+    header("location: ../error.php");
 }
+
 
 if (isset($_GET["pid2"])) {
     $pid2 = $_GET["pid2"];
     if (empty($pid2)) {
         header("location: ../error.php");
     } else {
-        if (isset($products['product'])) {
-            foreach ($products['product'] as $p) {
-                if ($p['pid'] == $pid2) {
-                    $product2 = $p;
-                }
-            }
-        }
+        $sql = "SELECT * FROM products WHERE id = $pid2;";
+        $result2 = mysqli_query($conn, $sql);
+
+        $product2 = mysqli_fetch_assoc($result2);
+        
+        $product_data2 = json_decode($product2['data'], true);
+        $description2 = $product_data2['description'];
+        $imagepath2 = $product_data2['imagepath'];
+        $colors2 = $product_data2['colors'];  
+        $storage2 = $product_data2['storage'];
     }
 }
 
@@ -81,7 +89,7 @@ if (!$product1 && !$product2) {
     <div id="product-info">
         <?php if ($product1): ?>
             <div id="product-container">
-                <img src="<?php echo $product1['imagepath']; ?>" alt="Product Image">
+                <img src="<?php echo $imagepath1; ?>" alt="Product Image">
                 <div id="product-option">
                     <label for="priceWOTax1">Price without taxes (€):</label>
                     <input type="number" id="priceWOTax1" step="100" value="<?php echo $product1['price']; ?>" data-original-price="<?php echo $product1['price']; ?>" oninput="updatePrices()">
@@ -94,14 +102,14 @@ if (!$product1 && !$product2) {
                             <label for="color1">Color</label>
                             </br>
                             <select id="color1">
-                                <?php foreach ($product1['colors'] as $color): ?>
+                                <?php foreach ($colors1 as $color): ?>
                                     <option value="<?php echo $color; ?>"><?php echo $color; ?></option>
                                 <?php endforeach; ?>
                             </select>
                             </br>
                             <span id="storage1">Storage</span>
                             </br>
-                            <?php foreach ($product1['storage'] as $storage): ?>
+                            <?php foreach ($storage1 as $storage): ?>
                                 <input type="radio" id="storage1_<?php echo $storage; ?>" name="storage1" value="<?php echo $storage; ?>" checked>
                                 <label for="storage1_<?php echo $storage; ?>"><?php echo $storage; ?>GB</label>
                             <?php endforeach; ?>
@@ -120,7 +128,7 @@ if (!$product1 && !$product2) {
                 <caption>Features</caption>
                 <!-- Display in a table with two columns -->
                 <?php $i = 0; ?>
-                <?php foreach ($product1['description'] as $feature): ?>
+                <?php foreach ($description1 as $feature): ?>
                     <?php if ($i % 2 == 0): ?>
                         <tr>
                     <?php endif; ?>
@@ -135,7 +143,7 @@ if (!$product1 && !$product2) {
         <?php endif; ?>
         <?php if ($product2): ?>
             <div id="product-container">
-                <img src="<?php echo $product2['imagepath']; ?>" alt="Product Image">
+                <img src="<?php echo $imagepath2; ?>" alt="Product Image">
                 <div id="product-option">
                     <label for="priceWOTax2">Price without taxes (€):</label>
                     <input type="number" id="priceWOTax2" step="100" value="<?php echo $product2['price']; ?>" data-original-price="<?php echo $product2['price']; ?>" oninput="updatePrices()">
@@ -148,14 +156,14 @@ if (!$product1 && !$product2) {
                             <label for="color2">Color</label>
                             </br>
                             <select id="color2">
-                                <?php foreach ($product2['colors'] as $color): ?>
+                                <?php foreach ($colors2 as $color): ?>
                                     <option value="<?php echo $color; ?>"><?php echo $color; ?></option>
                                 <?php endforeach; ?>
                             </select>
                             </br>
                             <span id="storage2">Storage</span>
                             </br>
-                            <?php foreach ($product2['storage'] as $storage): ?>
+                            <?php foreach ($storage2 as $storage): ?>
                                 <input type="radio" id="storage2_<?php echo $storage; ?>" name="storage2" value="<?php echo $storage; ?>" checked>
                                 <label for="storage2_<?php echo $storage; ?>"><?php echo $storage; ?>GB</label>
                             <?php endforeach; ?>
@@ -174,7 +182,7 @@ if (!$product1 && !$product2) {
                 <caption>Features</caption>
                 <!-- Display in a table with two columns -->
                 <?php $i = 0; ?>
-                <?php foreach ($product2['description'] as $feature): ?>
+                <?php foreach ($description2 as $feature): ?>
                     <?php if ($i % 2 == 0): ?>
                         <tr>
                     <?php endif; ?>

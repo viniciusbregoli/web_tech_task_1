@@ -24,15 +24,33 @@ $brandProducts = [
 ];
 
 // Get the brand from the query parameter
-$brandName = isset($_GET['brand']) ? $_GET['brand'] : 'Apple';  // Default to Apple if no brand is selected
+$brandId = isset($_GET['brandId']) ? $_GET['brandId'] : 1;  // Default to Galexy if no brand is selected
+$generalProductLink = "product.php?pid=";
 
-// Check if the brand exists in the array
-if (!array_key_exists($brandName, $brandProducts)) {
-    $brandName = 'Apple';  // Fallback to Apple if brand not found
+include('../db_connect.php');
+
+$sql = "SELECT id, name FROM products WHERE brand_id = $brandId;";
+$result = mysqli_query($conn, $sql);
+
+// Save result with associative array
+$products = [];
+
+if ($result->num_rows > 0) {
+    // Take each row as an associative array and add it to the $products list
+    while($row = $result->fetch_assoc()) {
+        $products[] = $row;
+    }
 }
 
-// Get the list of products for the selected brand
-$products = $brandProducts[$brandName];
+$brandName = 'Unknown';
+
+$brandSql = "SELECT name FROM brands WHERE id = $brandId;";
+$brandResult = mysqli_query($conn, $brandSql);
+    
+if ($brandResult->num_rows > 0) {
+    $brandRow = $brandResult->fetch_assoc();
+    $brandName = $brandRow['name'];
+}
 
 ?>
 
@@ -54,10 +72,10 @@ $products = $brandProducts[$brandName];
     </header>
     <hr />
     <ul>
-        <?php foreach ($products as $productName => $productLink): ?>
+        <?php foreach ($products as $product): ?>
             <li>
-                <a href="<?php echo $productLink; ?>">
-                    <?php echo $productName; ?>
+                <a href="<?php echo $generalProductLink . $product['id']; ?>">
+                    <?php echo $product['name']; ?>
                 </a>
             </li>
         <?php endforeach; ?>
@@ -67,6 +85,5 @@ $products = $brandProducts[$brandName];
     </footer>
     <img id="dark-mode" src="../../assets/moon.png" alt="Dark Mode" data-img-path="../../assets/"/>
     <script src="../scripts/darkMode.js"></script>
-    <script src="../scripts/screenWidth.js"></script>
 </body>
 </html>

@@ -17,7 +17,6 @@
         if (password_verify($password, $user['password'])) {
             echo "<script>
                     var username = '" . $user['username'] . "';
-                    console.log('Logged in as: ' + username);
                 </script>";
             // If the password is correct, store user info in the session.
             $_SESSION['username'] = $user['username'];
