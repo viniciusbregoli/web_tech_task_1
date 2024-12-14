@@ -1,4 +1,5 @@
 <?php
+session_start();
     // Get the brand and model id from the URL
     $brand = isset($_GET['brandId']) ? $_GET['brandId'] : 'Unknown';
     $category = isset($_GET['categoryId']) ? $_GET['categoryId'] : 'Unknown';
@@ -37,6 +38,15 @@
         $categoryRow = $categoryResult->fetch_assoc();
         $categoryName = $categoryRow['name'];
     }
+
+$cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+
+// Calculate total quantity of items in the cart
+$cart_quantity = 0;
+foreach ($cart as $item) {
+    $cart_quantity += $item['quantity'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +62,8 @@
         <h1><?php echo $brandName . " " . $categoryName; ?></h1>
         <div id="header-right">
             <a id="login" href="../login.php">Login</a>
+            <a id="shoppingcart" href="./shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
+            <span><?php echo $cart_quantity; ?></span>
             <a id="profile" href="../customer.php"><img src="../../assets/user.png" alt="profile"></a>
         </div>
     </header>

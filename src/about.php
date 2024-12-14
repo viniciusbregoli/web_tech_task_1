@@ -1,3 +1,13 @@
+<?php
+session_start();
+$cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+
+// Calculate total quantity of items in the cart
+$cart_quantity = 0;
+foreach ($cart as $item) {
+    $cart_quantity += $item['quantity'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +28,8 @@
         <h1><?php echo $headerTitle; ?></h1>
         <div id="header-right">
             <a id="login" href="login.php">Login</a>
+            <a id="shoppingcart" href="/myWebShop/src/products/shopping.php"><img src="../assets/shopping-cart.png" alt="shoppingcart"></a>
+            <span><?php echo $cart_quantity; ?></span>
             <a id="profile" href="customer.php"><img src="../assets/user.png" alt="profile"></a>
         </div>
     </header>

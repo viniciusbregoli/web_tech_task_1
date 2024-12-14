@@ -33,19 +33,26 @@ function getTotalPrice(priceWOTax) {
 
 // Function to update prices
 function updatePrices() {
+    const taxRate = 0.19;
+
     if (document.getElementById("priceWOTax1")) {
         const priceWOTax1 = parseFloat(document.getElementById("priceWOTax1").value) || 0;
-        const totalPriceWithTax1 = getTotalPrice(priceWOTax1);
+        const totalPriceWithTax1 = priceWOTax1 * (1 + taxRate);
         document.getElementById("priceWithTax1").innerText = `Price with Tax: €${totalPriceWithTax1.toFixed(2)}`;
+
+        // Store value in hidden input
+        document.getElementById("priceWithTaxInput1").value = totalPriceWithTax1.toFixed(2);
     }
 
     if (document.getElementById("priceWOTax2")) {
         const priceWOTax2 = parseFloat(document.getElementById("priceWOTax2").value) || 0;
-        const totalPriceWithTax2 = getTotalPrice(priceWOTax2);
+        const totalPriceWithTax2 = priceWOTax2 * (1 + taxRate);
         document.getElementById("priceWithTax2").innerText = `Price with Tax: €${totalPriceWithTax2.toFixed(2)}`;
+
+        // Store value in hidden input
+        document.getElementById("priceWithTaxInput2").value = totalPriceWithTax2.toFixed(2);
     }
 }
-
 function applyDiscount(discountRate) {
     if (discountRate < 0 || discountRate > 1) {
         console.error("Invalid discount rate. It should be between 0 and 1.");

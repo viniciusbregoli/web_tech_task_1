@@ -1,3 +1,13 @@
+<?php
+session_start();
+$cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+
+// Calculate total quantity of items in the cart
+$cart_quantity = 0;
+foreach ($cart as $item) {
+    $cart_quantity += $item['quantity'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,12 +59,15 @@
     <header class="container">
         <h1>Welcome to Our Tech Shop</h1>
         <div id="header-right">
+            <a id="shoppingcart" href="/myWebShop/src/products/shopping.php"><img src="../assets/shopping-cart.png" alt="shoppingcart"></a>
+            <span><?php echo $cart_quantity; ?></span>
             <?php
                 // Check whether user is logged in
                 session_start();
 
                 $href = isset($_SESSION['username']) ? "logout.php" : "login.php";
                 $text = isset($_SESSION['username']) ? "Logout" : "Login";
+            
                 echo "<a href=$href>$text</a>";
 
                 $profileHref = isset($_SESSION['username']) ? "customer.php" : "login.php";
