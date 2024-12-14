@@ -128,7 +128,7 @@ foreach ($cart as $item) {
                             </br>
                             </br>
                             <input id="cart1" type="submit" value="Add to Cart">
-                            <input type="hidden" name="pid" value="<?php echo $product1['pid']; ?>">
+                            <input type="hidden" name="pid" value="<?php echo $pid; ?>">
                             <input type="hidden" name="name" value="<?php echo htmlspecialchars($product1['name']); ?>">
                             <input type="hidden" name="price" value="<?php echo $product1['price']; ?>">
                             <input type="hidden" id="priceWithTaxInput1" name="priceWithTax" value=""> <!-- Price with tax -->
@@ -186,7 +186,7 @@ foreach ($cart as $item) {
                             <?php endforeach; ?>
                             </br>
                             </br>
-                            <input type="hidden" name="pid" value="<?php echo $product2['pid']; ?>">
+                            <input type="hidden" name="pid" value="<?php echo $pid2; ?>">
                             <input type="hidden" name="name" value="<?php echo htmlspecialchars($product2['name']); ?>">
                             <input type="hidden" name="price" value="<?php echo $product2['price']; ?>">
                             <input id="cart2" type="submit" value="Add to Cart">

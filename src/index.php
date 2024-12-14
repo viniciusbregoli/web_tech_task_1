@@ -79,7 +79,7 @@ foreach ($cart as $item) {
             <?php foreach ($brands as $brand): ?>
                 <li class="list-brand">
                     <a href="<?php echo $generalProductLink . $brand['id']; ?>">
-                        <img src="<?php echo $brand['logo']; ?>" alt="<?php echo $brand['name'] . ' logo'; ?>">
+                        <img class="brand-img" src="<?php echo $brand['logo']; ?>" alt="<?php echo $brand['name'] . ' logo'; ?>">
                     </a>
 
                     <ul>

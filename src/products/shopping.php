@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['cart'] = $cart; // Update the session cart
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </table>
         <!-- Display Total Sum -->
         <p><strong>Total: €<?php echo number_format($total, 2); ?></strong></p>
-        
+
+        <form method="POST" action="checkout.php">
+            <button type="submit">Checkout</button>
+        </form>
+
         <!-- Clear Cart Form -->
         <form action="clearCart.php" method="POST">
             <input type="submit" value="Clear Cart">
