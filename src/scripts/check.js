@@ -131,8 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!usernameIsValid || !passwordIsValid || !passwordsMatch) {
             event.preventDefault(); // stop the form from submitting if validation fails
-        } else {
+        } /*else {
             alert("Registration successful!");
-        }
+        }*/
     });
 });

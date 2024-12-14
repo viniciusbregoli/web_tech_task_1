@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (!usernameIsValid || !passwordIsValid) {
             event.preventDefault();
-        } else {
+        } /*else {
             alert("Login successfull");
-        }
+        }*/
     });
 });

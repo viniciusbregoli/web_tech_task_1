@@ -33,6 +33,7 @@ if (!array_key_exists($brandName, $brandProducts)) {
 
 // Get the list of products for the selected brand
 $products = $brandProducts[$brandName];
+
 ?>
 
 <!DOCTYPE html>

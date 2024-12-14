@@ -2,7 +2,7 @@
 function addToCollection(productId) {
     const collectionItems = document.getElementById("collection-items");
 
-    if (productId === "product1" && document.getElementById("quantity1")) {
+    if (productId === 'product1' && document.getElementById("quantity1")) {
         const productName1 = document.querySelector("h1").innerText.split(" & ")[0];
         const quantity1 = document.getElementById("quantity1").value;
         const color1 = document.getElementById("color1").value;

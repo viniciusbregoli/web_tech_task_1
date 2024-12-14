@@ -7,7 +7,8 @@
     <title>Welcome to Our Tech Shop</title>
 </head>
 <body>
-    <?php
+    <?php 
+    // associative array
     $navItems = [
         "Samsung" => [
             "logo" => "https://cdn.icon-icons.com/icons2/3914/PNG/512/samsung_logo_icon_248596.png",
@@ -39,8 +40,17 @@
     <header class="container">
         <h1>Welcome to Our Tech Shop</h1>
         <div id="header-right">
-            <a id="login" href="login.php">Login</a>
-            <a id="profile" href="customer.php"><img src="../assets/user.png" alt="profile"></a>
+            <?php
+                // Check whether user is logged in
+                session_start();
+
+                $href = isset($_SESSION['username']) ? "logout.php" : "login.php";
+                $text = isset($_SESSION['username']) ? "Logout" : "Login";
+                echo "<a href=$href>$text</a>";
+
+                $profileHref = isset($_SESSION['username']) ? "customer.php" : "login.php";
+                echo "<a id=\"profile\" href=$profileHref><img src=\"../assets/user.png\" alt=\"Profile\"></a>";
+            ?>
         </div>
     </header>
     <nav>
@@ -52,9 +62,12 @@
                     </a>
 
                     <ul>
-                        <?php foreach ($details['models'] as $modelName => $modelLink): ?>
+                        <?php foreach ($details['models'] as $category): ?>
+                            <?php 
+                                $categoryLink = sprintf("/myWebShop/src/products/productLineList.php?brand=%s&model=%s", $brand, $category);
+                            ?>
                             <li class="list-brand-model">
-                               <a href="<?php echo $modelLink; ?>"><?php echo $modelName; ?></a>
+                               <a href="<?php echo $categoryLink; ?>"><?php echo $category; ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -67,6 +80,5 @@
     </footer>
     <img id="dark-mode" src="../assets/moon.png" alt="Dark Mode" data-img-path="../assets/"/>
     <script src="./scripts/darkMode.js"></script>
-    <script src="../scripts/screenWidth.js"></script>
 </body>
 </html>

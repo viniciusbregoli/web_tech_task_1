@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./css/formStyle.css">
-    <title><?php echo $pageTitle; ?></title>
-</head>
-<body>
-    <?php
+<?php
     $pageTitle = "Customer";
     $heading = "Profile Details";
     $legend = "USER INFO";
@@ -17,6 +11,12 @@
     $homeLinkText = "Home";
     $logoutLinkText = "Logout";
     ?>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./css/formStyle.css">
+    <title><?php echo $pageTitle; ?></title>
+</head>
+<body>
     <header>
         <h1><?php echo $heading; ?></h1>
         <a id="logout" href="logout.php"><?php echo $logoutLinkText; ?></a>
@@ -42,6 +42,5 @@
     <img id="dark-mode" src="../assets/moon.png" alt="Dark Mode" data-img-path="../assets/"/>
     <script src="./scripts/check.js"></script>
     <script src="./scripts/darkMode.js"></script>
-    <script src="../scripts/screenWidth.js"></script>
 </body>
 </html>
