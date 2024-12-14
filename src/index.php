@@ -63,7 +63,6 @@ foreach ($cart as $item) {
             <span><?php echo $cart_quantity; ?></span>
             <?php
                 // Check whether user is logged in
-                session_start();
 
                 $href = isset($_SESSION['username']) ? "logout.php" : "login.php";
                 $text = isset($_SESSION['username']) ? "Logout" : "Login";
