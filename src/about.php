@@ -39,6 +39,18 @@ foreach ($cart as $item) {
         <h2><?php echo $contactTitle; ?></h2>
         <p><?php echo $contactText; ?></p>
     </section>
+    <form action="submit_feedback.php" method="POST" id="feedbackForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea>
+        <br>
+        <input type="submit" value="Submit Feedback">
+    </form>
     <footer>
         <a id="home" href="/myWebShop/src/index.php"><?php echo $homeLink; ?></a>
     </footer>
