@@ -96,10 +96,26 @@ foreach ($cart as $item) {
             <?php endforeach; ?>
         </ul>
     </nav>
+    <button id="openChatBtn">Chat with Support</button>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <span>Support Chat</span>
+            <button id="closeChatBtn">&times;</button>
+        </div>
+        <div class="chat-body">
+            <p>Welcome to support chat!</p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Type your message...">
+            <button>Send</button>
+        </div>
+    </div>
     <footer>
         <a href="about.php">About Us</a>
     </footer>
     <img id="dark-mode" src="../assets/moon.png" alt="Dark Mode" data-img-path="../assets/"/>
     <script src="./scripts/darkMode.js"></script>
+    <script src="./scripts/chat.js"></script>
 </body>
 </html>
