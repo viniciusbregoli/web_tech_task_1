@@ -15,11 +15,11 @@ if (isset($_GET["pid"])) {
         $result1 = mysqli_query($conn, $sql);
 
         $product1 = mysqli_fetch_assoc($result1);
-        
+
         $product_data1 = json_decode($product1['data'], true);
         $description1 = $product_data1['description'];
         $imagepath1 = $product_data1['imagepath'];
-        $colors1 = $product_data1['colors'];  
+        $colors1 = $product_data1['colors'];
         $storage1 = $product_data1['storage'];
     }
 } else {
@@ -36,11 +36,11 @@ if (isset($_GET["pid2"])) {
         $result2 = mysqli_query($conn, $sql);
 
         $product2 = mysqli_fetch_assoc($result2);
-        
+
         $product_data2 = json_decode($product2['data'], true);
         $description2 = $product_data2['description'];
         $imagepath2 = $product_data2['imagepath'];
-        $colors2 = $product_data2['colors'];  
+        $colors2 = $product_data2['colors'];
         $storage2 = $product_data2['storage'];
     }
 }
@@ -55,6 +55,30 @@ $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 $cart_quantity = 0;
 foreach ($cart as $item) {
     $cart_quantity += $item['quantity'];
+}
+
+// Fetch reviews for the product
+$reviews = [];
+if ($product1) {
+    $reviewStmt1 = $conn->prepare("SELECT * FROM reviews WHERE product_id = ?");
+    $reviewStmt1->bind_param("i", $pid);
+    $reviewStmt1->execute();
+    $reviewsResult1 = $reviewStmt1->get_result();
+    while ($row = $reviewsResult1->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+    $reviewStmt1->close();
+}
+
+if ($product2) {
+    $reviewStmt2 = $conn->prepare("SELECT * FROM reviews WHERE product_id = ?");
+    $reviewStmt2->bind_param("i", $pid2);
+    $reviewStmt2->execute();
+    $reviewsResult2 = $reviewStmt2->get_result();
+    while ($row = $reviewsResult2->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+    $reviewStmt2->close();
 }
 ?>
 
@@ -139,22 +163,22 @@ foreach ($cart as $item) {
                 </div>
             </div>
             <div>
-            <table>
-                <caption>Features</caption>
-                <!-- Display in a table with two columns -->
-                <?php $i = 0; ?>
-                <?php foreach ($description1 as $feature): ?>
-                    <?php if ($i % 2 == 0): ?>
-                        <tr>
-                    <?php endif; ?>
-                        <td><?php echo $feature; ?></td>
-                    <?php if ($i % 2 == 1): ?>
-                        </tr>
-                    <?php endif; ?>
-                    <?php $i++; ?>
-                <?php endforeach; ?>
-            </table>
-        </div>
+                <table>
+                    <caption>Features</caption>
+                    <!-- Display in a table with two columns -->
+                    <?php $i = 0; ?>
+                    <?php foreach ($description1 as $feature): ?>
+                        <?php if ($i % 2 == 0): ?>
+                            <tr>
+                            <?php endif; ?>
+                            <td><?php echo $feature; ?></td>
+                            <?php if ($i % 2 == 1): ?>
+                            </tr>
+                        <?php endif; ?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                </table>
+            </div>
         <?php endif; ?>
         <?php if ($product2): ?>
             <div id="product-container">
@@ -196,28 +220,64 @@ foreach ($cart as $item) {
                 </div>
             </div>
             <div>
-            <table>
-                <caption>Features</caption>
-                <!-- Display in a table with two columns -->
-                <?php $i = 0; ?>
-                <?php foreach ($description2 as $feature): ?>
-                    <?php if ($i % 2 == 0): ?>
-                        <tr>
-                    <?php endif; ?>
-                        <td><?php echo $feature; ?></td>
-                    <?php if ($i % 2 == 1): ?>
-                        </tr>
-                    <?php endif; ?>
-                    <?php $i++; ?>
-                <?php endforeach; ?>
-            </table>
-        </div>
+                <table>
+                    <caption>Features</caption>
+                    <!-- Display in a table with two columns -->
+                    <?php $i = 0; ?>
+                    <?php foreach ($description2 as $feature): ?>
+                        <?php if ($i % 2 == 0): ?>
+                            <tr>
+                            <?php endif; ?>
+                            <td><?php echo $feature; ?></td>
+                            <?php if ($i % 2 == 1): ?>
+                            </tr>
+                        <?php endif; ?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                </table>
+            </div>
         <?php endif; ?>
     </div>
     <div id="collection-list">
         <h2>Collection List</h2>
         <ul id="collection-items"></ul>
         <button type="button" onclick="clearCollection()">Clear Collection List</button>
+    </div>
+    <!-- Review Form -->
+    <div id="review-form">
+        <h2>Leave a Review</h2>
+        <form action="submitReview.php" method="POST">
+            <input type="hidden" name="product_id" value="<?php echo $pid; ?>">
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" required></textarea>
+            <br>
+            <input type="submit" value="Submit Review">
+        </form>
+    </div>
+
+    <!-- Display Reviews -->
+    <div id="reviews">
+        <h2>Reviews</h2>
+        <?php if (!empty($reviews)): ?>
+            <?php foreach ($reviews as $review): ?>
+                <div class="review">
+                    <p><strong><?php echo htmlspecialchars($review['username']); ?></strong> (<?php echo $review['rating']; ?>/5)</p>
+                    <p><?php echo htmlspecialchars($review['review']); ?></p>
+                    <p><small><?php echo $review['review_date']; ?></small></p>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No reviews yet.</p>
+        <?php endif; ?>
     </div>
     <footer>
         <a id="home" href="../index.php">Home</a>
@@ -227,4 +287,5 @@ foreach ($cart as $item) {
     <script src="../scripts/darkMode.js"></script>
     <script src="../scripts/screenWidth.js"></script>
 </body>
+
 </html>
