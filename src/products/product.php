@@ -4,7 +4,10 @@ session_start();
 $product1 = null;
 $product2 = null;
 
+$redirectUrl="products/product.php";
+
 include('../db_connect.php');
+
 
 if (isset($_GET["pid"])) {
     $pid = $_GET["pid"];
@@ -13,7 +16,7 @@ if (isset($_GET["pid"])) {
     } else {
         $sql = "SELECT * FROM products WHERE id = $pid;";
         $result1 = mysqli_query($conn, $sql);
-
+        
         $product1 = mysqli_fetch_assoc($result1);
         
         $product_data1 = json_decode($product1['data'], true);
@@ -92,10 +95,18 @@ foreach ($cart as $item) {
             ?>
         </h1>
         <div id="header-right">
-            <a id="login" href="../login.php">Login</a>
-            <a id="shoppingcart" href="./shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
-            <span><?php echo $cart_quantity; ?></span>
-            <a id="profile" href="../customer.php"><img src="../../assets/user.png" alt="profile"></a>
+        <?php
+                // Check whether user is logged in
+                $href = isset($_SESSION['username']) ? "../logout.php" : "../login.php?redirect=$redirectUrl";
+                $text = isset($_SESSION['username']) ? "Logout" : "Login";
+            
+                echo "<a href=$href>$text</a>";
+
+                $profileHref = isset($_SESSION['username']) ? "../customer.php" : "../login.php?redirect=customer.php";
+                echo "<a id=\"shoppingcart\" href=\"/myWebShop/src/products/shopping.php\"><img src=\"../../assets/shopping-cart.png\" alt=\"shoppingcart\"></a>
+                        <span>$cart_quantity</span>";
+                echo "<a id=\"profile\" href=$profileHref><img src=\"../../assets/user.png\" alt=\"Profile\"></a>";
+            ?>
         </div>
     </header>
     <div id="product-info">

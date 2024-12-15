@@ -5,6 +5,8 @@ session_start();
     $category = isset($_GET['categoryId']) ? $_GET['categoryId'] : 'Unknown';
     $generalProductLink = "product.php?pid=";
 
+    $redirectUrl="products/productLineList.php";
+
     include('../db_connect.php');
 
     $sql = "SELECT id, name FROM products WHERE category_id = $category;";
@@ -61,20 +63,19 @@ foreach ($cart as $item) {
     <header class="container">
         <h1><?php echo $brandName . " " . $categoryName; ?></h1>
         <div id="header-right">
-            <a id="shoppingcart" href="./shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
-            <span><?php echo $cart_quantity; ?></span>
-            <?php
+        <?php
                 // Check whether user is logged in
-
-                $href = isset($_SESSION['username']) ? "logout.php" : "../login.php";
+                $href = isset($_SESSION['username']) ? "../logout.php" : "../login.php?redirect=$redirectUrl";
                 $text = isset($_SESSION['username']) ? "Logout" : "Login";
             
                 echo "<a href=$href>$text</a>";
 
-                $profileHref = isset($_SESSION['username']) ? "customer.php" : "../login.php";
+                $profileHref = isset($_SESSION['username']) ? "../customer.php" : "../login.php?redirect=customer.php";
+                echo "<a id=\"shoppingcart\" href=\"/myWebShop/src/products/shopping.php\"><img src=\"../../assets/shopping-cart.png\" alt=\"shoppingcart\"></a>
+                        <span>$cart_quantity</span>";
                 echo "<a id=\"profile\" href=$profileHref><img src=\"../../assets/user.png\" alt=\"Profile\"></a>";
             ?>
-            </div>
+        </div>
     </header>
     <hr />
     <ul>

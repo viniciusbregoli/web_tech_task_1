@@ -146,7 +146,7 @@ if ($nextOrderCount % 20 == 0) {
     <?php endif; ?>
 
     <footer>
-        <a href="../index.php">Continue Shopping</a>
+        <a href="javascript:history.back();">Continue Shopping</a>
     </footer>
 
     <img id="dark-mode" src="../../assets/moon.png" alt="Dark Mode" data-img-path="../../assets/"/>

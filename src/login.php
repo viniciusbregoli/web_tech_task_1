@@ -10,6 +10,8 @@
     $registerButtonText = "Register";
     $homeLinkText = "Home";
     $adm="Admin login";
+    
+    $redirectUrl = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
     ?>
 <head>
     <meta charset="UTF-8">
@@ -21,7 +23,7 @@
     <header>
         <h1><?php echo $heading; ?></h1>
     </header>
-    <form method="post" action="login_proc.php">
+    <form method="post" action=<?php echo "login_proc.php?redirect=$redirectUrl"?>>
         <fieldset>
             <legend><?php echo $legend; ?></legend>
             <label for="username"><?php echo $usernameLabel; ?></label>
