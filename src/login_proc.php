@@ -5,7 +5,9 @@
     
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
+
+    $redirectUrl = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+
     // Check user
     $sql = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_query($conn, $sql);
@@ -22,8 +24,8 @@
             $_SESSION['username'] = $user['username'];
             echo "<script>
                     alert(\"Login successful! Welcome back.\");
+                    location.href=\"$redirectUrl\";
                 </script>";
-            header("Location: index.php");
         } else {
             // Incorrect password
             echo "<script>

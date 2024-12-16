@@ -1,29 +1,7 @@
 <?php
+$redirectUrl="products/productList.php";
 
 session_start();
-// Define product data for each brand
-$brandProducts = [
-    "Apple" => [
-        "iPhone MINI 12" => "product.php?pid=220",
-        "iPhone MINI 13" => "product.php?pid=221",
-        "iPhone PRO 16" => "product.php?pid=200",
-        "iPhone PRO 16 Max" => "product.php?pid=201",
-        "iPhone SE 2" => "product.php?pid=210",
-        "iPhone SE 3" => "product.php?pid=211",
-    ],
-    "Samsung" => [
-        "Galaxy Note 10" => "product.php?pid=100",
-        "Galaxy Note 20" => "product.php?pid=101",
-        "Galaxy Z Flip 5" => "product.php?pid=110",
-        "Galaxy Z Flip 6" => "product.php?pid=111",
-    ],
-    "Google" => [
-        "Pixel 8" => "product.php?pid=300",
-        "Pixel 9" => "product.php?pid=301",
-        "Pixel 9 Pro" => "product.php?pid=310",
-        "Pixel 9 Pro Fold" => "product.php?pid=311",
-    ]
-];
 
 // Get the brand from the query parameter
 $brandId = isset($_GET['brandId']) ? $_GET['brandId'] : 1;  // Default to Galexy if no brand is selected
@@ -76,17 +54,16 @@ foreach ($cart as $item) {
     <header class="container">
         <h1><?php echo $brandName . " Series"; ?></h1>
         <div id="header-right">
-            <a id="shoppingcart" href="./shopping.php"><img src="../../assets/shopping-cart.png" alt="shoppingcart"></a>
-            <span><?php echo $cart_quantity; ?></span>
             <?php
                 // Check whether user is logged in
-
-                $href = isset($_SESSION['username']) ? "logout.php" : "../login.php";
+                $href = isset($_SESSION['username']) ? "../logout.php" : "../login.php?redirect=$redirectUrl";
                 $text = isset($_SESSION['username']) ? "Logout" : "Login";
             
                 echo "<a href=$href>$text</a>";
 
-                $profileHref = isset($_SESSION['username']) ? "customer.php" : "../login.php";
+                $profileHref = isset($_SESSION['username']) ? "../customer.php" : "../login.php?redirect=customer.php";
+                echo "<a id=\"shoppingcart\" href=\"/myWebShop/src/products/shopping.php\"><img src=\"../../assets/shopping-cart.png\" alt=\"shoppingcart\"></a>
+                        <span>$cart_quantity</span>";
                 echo "<a id=\"profile\" href=$profileHref><img src=\"../../assets/user.png\" alt=\"Profile\"></a>";
             ?>
         </div>

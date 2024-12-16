@@ -2,8 +2,14 @@
 session_start();
 require '../db_connect.php'; // Include DB connection
 
+$redirectUrl='./products/shopping.php';
+
 if (!isset($_SESSION['username'])) {
-    die("You need to be logged in to place an order.");
+    echo "<script>
+        alert(\"You need to be logged in to place an order.\");
+        location.href=\"../login.php?redirect=$redirectUrl\";
+    </script>";
+    exit;
 }
 
 $username = $_SESSION['username'];

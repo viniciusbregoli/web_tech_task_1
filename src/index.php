@@ -59,17 +59,16 @@ foreach ($cart as $item) {
     <header class="container">
         <h1>Welcome to Our Tech Shop</h1>
         <div id="header-right">
-            <a id="shoppingcart" href="/myWebShop/src/products/shopping.php"><img src="../assets/shopping-cart.png" alt="shoppingcart"></a>
-            <span><?php echo $cart_quantity; ?></span>
             <?php
                 // Check whether user is logged in
-
                 $href = isset($_SESSION['username']) ? "logout.php" : "login.php";
                 $text = isset($_SESSION['username']) ? "Logout" : "Login";
             
                 echo "<a href=$href>$text</a>";
 
                 $profileHref = isset($_SESSION['username']) ? "customer.php" : "login.php";
+                echo "<a id=\"shoppingcart\" href=\"/myWebShop/src/products/shopping.php\"><img src=\"../assets/shopping-cart.png\" alt=\"shoppingcart\"></a>
+                        <span>$cart_quantity</span>";
                 echo "<a id=\"profile\" href=$profileHref><img src=\"../assets/user.png\" alt=\"Profile\"></a>";
             ?>
         </div>
