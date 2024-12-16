@@ -8,7 +8,7 @@
     $passwordLabel = "Password";
     $confirmPasswordLabel = "Confirm Password";
     $submitButtonText = "Submit";
-    $backToLoginButtonText = "Back to Login";
+    $backToLoginButtonText = "Back to Login";z
     ?>
 <head>
     <meta charset="UTF-8">
