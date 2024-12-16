@@ -1,6 +1,4 @@
 <?php
-$redirectUrl="products/productList.php";
-
 session_start();
 
 // Get the brand from the query parameter
@@ -56,7 +54,7 @@ foreach ($cart as $item) {
         <div id="header-right">
             <?php
                 // Check whether user is logged in
-                $href = isset($_SESSION['username']) ? "../logout.php" : "../login.php?redirect=$redirectUrl";
+                $href = isset($_SESSION['username']) ? "../logout.php" : "../login.php";
                 $text = isset($_SESSION['username']) ? "Logout" : "Login";
             
                 echo "<a href=$href>$text</a>";

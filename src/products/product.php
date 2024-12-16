@@ -14,6 +14,7 @@ if (isset($_GET["pid"])) {
     if (empty($pid)) {
         header("location: ../error.php");
     } else {
+        $redirectUrl="products/product.php?pid=$pid";
         $sql = "SELECT * FROM products WHERE id = $pid;";
         $result1 = mysqli_query($conn, $sql);
         
@@ -35,6 +36,7 @@ if (isset($_GET["pid2"])) {
     if (empty($pid2)) {
         header("location: ../error.php");
     } else {
+        $redirectUrl="products/product.php?pid=$pid&pid2=$pid2";
         $sql = "SELECT * FROM products WHERE id = $pid2;";
         $result2 = mysqli_query($conn, $sql);
 

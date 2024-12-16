@@ -8,7 +8,9 @@
     $passwordLabel = "Password";
     $confirmPasswordLabel = "Confirm Password";
     $submitButtonText = "Submit";
-    $backToLoginButtonText = "Back to Login";z
+    $backToLoginButtonText = "Back to Login";
+    
+    $redirectUrl = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
     ?>
 <head>
     <meta charset="UTF-8">
@@ -18,7 +20,7 @@
 </head>
 <body>
     <h1><?php echo $heading; ?></h1>
-    <form method="post" action="registration_proc.php">
+    <form method="post" action=<?php echo "registration_proc.php?redirect=$redirectUrl"?>>
         <fieldset>
             <legend><?php echo $legend; ?></legend>
             <label for="username"><?php echo $usernameLabel; ?></label>
@@ -31,7 +33,7 @@
             <input type="password" id="confirm_password" required />
             <br><br>
             <input type="submit" value="<?php echo $submitButtonText; ?>" />
-            <button type="button" onclick="location.href='login.php'"><?php echo $backToLoginButtonText; ?></button>
+            <button type="button" onclick="history.back();"><?php echo $backToLoginButtonText; ?></button>
         </fieldset>
     </form>
     <img id="dark-mode" src="../assets/moon.png" alt="Dark Mode" data-img-path="../assets/"/>

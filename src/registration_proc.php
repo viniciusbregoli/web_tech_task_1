@@ -3,6 +3,8 @@
 
     include('db_connect.php');
 
+    $redirectUrl = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+
     $username = $_POST['username'];
     $password = $_POST['password'];
     
@@ -29,7 +31,7 @@
             echo "<script>
                     alert(\"Registration has been successfully completed.\");
                 </script>";
-            header("Location: login.php");
+            header("Location: login.php?redirect=$redirectUrl");
         } else {
             // Sign up failed
             echo "<script>

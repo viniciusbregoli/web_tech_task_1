@@ -33,7 +33,7 @@
             <input type="password" id="password" name="password" required />
             <br><br>
             <input type="submit" value="<?php echo $loginButtonText; ?>" />
-            <button type="button" onclick="location.href='registration.php'"><?php echo $registerButtonText; ?></button>
+            <button type="button" onclick="location.href='registration.php?redirect=<?php echo $redirectUrl?>'"><?php echo $registerButtonText; ?></button>
         </fieldset>
     </form>
     <footer>
